@@ -46,14 +46,15 @@
 .profile__text {
   font-family: "Inter", "Arial", sans-serif;
   color: #fff;
-  margin-left: 31px;
+  margin-left: 30px;
   display: flex;
   max-width: 336px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .profile__title {
-  margin: 0 0 16px;
+  margin: 0 0 9px;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
@@ -73,7 +74,6 @@
   border: 1px solid #fff;
   max-width: 24px;
   max-height: 24px;
-  align-self: center;
   margin-left: 18px;
 }
 
