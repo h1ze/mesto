@@ -33,11 +33,6 @@
   align-items: center;
 }
 
-.profile__avatar {
-  max-width: 168.75px;
-  box-sizing: border-box;
-  padding: 3.75px 26.25px 3.75px 22.5px;
-}
 
 .profile__image {
   border-radius: 50%;
@@ -54,7 +49,7 @@
 }
 
 .profile__title {
-  margin: 0 0 9px;
+  margin: 2px 0 8px;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
@@ -74,7 +69,7 @@
   border: 1px solid #fff;
   max-width: 24px;
   max-height: 24px;
-  margin-left: 18px;
+  margin-left: 19px;
 }
 
 .profile__btn-add {
