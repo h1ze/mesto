@@ -1,0 +1,86 @@
+.page {
+  background-color: #000000;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  box-sizing: border-box;
+  padding: 45px 0 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.profile {
+  max-width: 880px;
+  box-sizing: border-box;
+  padding: 40px 0 51px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile__info {
+  display: flex;
+  align-items: center;
+}
+
+.profile__avatar {
+  max-width: 168.75px;
+  box-sizing: border-box;
+  padding: 3.75px 26.25px 3.75px 22.5px;
+}
+
+.profile__image {
+  border-radius: 50%;
+}
+
+.profile__text {
+  font-family: "Inter", "Arial", sans-serif;
+  color: #fff;
+  display: flex;
+  max-width: 336px;
+  flex-wrap: wrap;
+}
+
+.profile__title {
+  margin: 0 0 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+.profile__subtitle {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.profile__btn-edit {
+  background-color: #000;
+  border: 1px solid #fff;
+  max-width: 24px;
+  max-height: 24px;
+  align-self: center;
+  margin-left: 18px;
+}
+
+.profile__btn-add {
+  box-sizing: border-box;
+  padding: 14px 64px;
+  background-color: #000;
+  border: 1px solid #fff;
+  max-width: 150px;
+  max-height: 50px;
+}
