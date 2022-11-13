@@ -12,7 +12,7 @@
 
 .header {
   box-sizing: border-box;
-  padding: 45px 0 41px;
+  padding: 45px 0 36px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   max-width: 880px;
   margin: 0 auto;
@@ -46,6 +46,7 @@
 .profile__text {
   font-family: "Inter", "Arial", sans-serif;
   color: #fff;
+  margin-left: 31px;
   display: flex;
   max-width: 336px;
   flex-wrap: wrap;
