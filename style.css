@@ -14,7 +14,7 @@
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 282px);
+  grid-template-columns: repeat(auto-fit, 282px);
   grid-template-rows: repeat(2, 361px);
   grid-row-gap: 20px;
   grid-column-gap: 17px;
