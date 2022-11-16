@@ -1,5 +1,8 @@
 .element__button-like {
   border: none;
-  background-color: #fff;
-  padding: 0;
+  width: 22px;
+  height: 19px;
+  background-image: url("../../../images/stroke.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
 }
