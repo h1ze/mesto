@@ -1,0 +1,16 @@
+.page_wrapper {
+  box-sizing: border-box;
+  padding: 0 200px;
+}
+
+@media screen and (max-width: 1152px) {
+  .page_wrapper {
+    padding: 0 150px;
+  }
+}
+
+@media screen and (max-width: 984px) {
+  .page_wrapper {
+    padding: 0 50px;
+  }
+}

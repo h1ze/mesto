@@ -5,3 +5,13 @@
   max-height: 24px;
   margin-left: 19px;
 }
+
+@media screen and (max-width: 568px) {
+  .profile__btn-edit {
+    margin-left: 10px;
+    max-width: 18px;
+    max-height: 18px;
+    text-align: center;
+    padding: 5.25px;
+  }
+}

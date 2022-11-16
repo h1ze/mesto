@@ -2,3 +2,10 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 870px) {
+  .profile__info {
+    flex-direction: column;
+    gap: 22.25px;
+  }
+}
