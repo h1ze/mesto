@@ -9,3 +9,12 @@
   box-sizing: border-box;
   padding: 67px 0 60px;
 }
+
+@media screen and (max-width: 568px) {
+  .footer__copyright {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 48px 19px 36px;
+  }
+}

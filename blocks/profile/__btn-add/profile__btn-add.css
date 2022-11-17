@@ -4,6 +4,7 @@
   width: 150px;
   height: 50px;
   background-image: url("../../../images/add.svg");
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
 }

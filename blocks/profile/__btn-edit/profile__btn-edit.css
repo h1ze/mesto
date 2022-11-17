@@ -5,6 +5,7 @@
   height: 24px;
   margin-left: 19px;
   background-image: url("../../../images/edit.svg");
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
 }

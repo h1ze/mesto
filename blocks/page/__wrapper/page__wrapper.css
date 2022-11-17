@@ -17,6 +17,7 @@
 
 @media screen and (max-width: 568px) {
   .page_wrapper {
-    padding: 0 19px;
+    padding: 0px;
+    overflow: hidden;
   }
 }
