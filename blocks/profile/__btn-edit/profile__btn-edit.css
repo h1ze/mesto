@@ -8,6 +8,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: 10px 10px;
 }
 
 @media screen and (max-width: 568px) {
@@ -15,5 +16,6 @@
     margin-left: 10px;
     width: 18px;
     height: 18px;
+    background-size: 7.5px 7.5px;
   }
 }

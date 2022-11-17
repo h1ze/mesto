@@ -6,6 +6,7 @@
 @import url("../blocks/wrapper/wrapper.css");
 
 @import url("../blocks/header/header.css");
+@import url("../blocks/header/__logo/header__logo.css");
 
 @import url("../blocks/profile/profile.css");
 @import url("../blocks/profile/__info/profile__info.css");
