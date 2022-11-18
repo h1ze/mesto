@@ -1,0 +1,6 @@
+.element__button-like_active {
+  background-image: url("../../../../images/stroke_active.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
