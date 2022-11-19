@@ -46,12 +46,12 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 }
 
 .form__input {
   box-sizing: border-box;
-  padding: 30px 0 13px;
+  padding: 30px 0 9px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Inter", "Arial", sans-serif;
@@ -73,8 +73,8 @@
   text-align: center;
   color: #ffffff;
   box-sizing: border-box;
-  padding: 14px 0 18px;
+  padding: 14px 0 10px;
   width: 100%;
   background-color: #000;
-  margin: 48px 0 37px;
+  margin: 48px 0 0px;
 }
