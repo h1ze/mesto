@@ -131,9 +131,26 @@
           <div class="popup__content">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form form">
-              <fieldset class="form__profile-name" input type="text"></fieldset>
-              <fieldset class="form__profile-info" input type="text"></fieldset>
+              <input
+                class="form__input form__input_-name"
+                type="text"
+                value=""
+                name="name"
+                tabindex="1"
+                placeholder="Имя"
+              />
+              <input
+                class="form__input form__input_info"
+                type="text"
+                value=""
+                name="info"
+                tabindex="2"
+                placeholder="О себе"
+              />
             </form>
+            <button class="form__button" type="submit" tabindex="3">
+              Сохранить
+            </button>
           </div>
         </div>
       </section>
