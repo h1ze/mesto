@@ -7,3 +7,8 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.element__button-like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
