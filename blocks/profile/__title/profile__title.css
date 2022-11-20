@@ -7,6 +7,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  min-width: 250px;
   max-width: 294px;
 }
 
@@ -18,3 +19,19 @@
     margin: 0 0 8px 3px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .profile__title {
+    text-align: center;
+    min-width: 220px;
+    max-width: 230px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .profile__title {
+    min-width: 189px;
+    max-width: 200px;
+  }
+}
+

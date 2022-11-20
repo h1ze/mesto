@@ -10,6 +10,12 @@
   max-width: 336px;
 }
 
+@media screen and (max-width: 768px) {
+  .profile__subtitle {
+    max-width: 220px;
+  }
+}
+
 @media screen and (max-width: 568px) {
   .profile__subtitle {
     font-weight: 400;
