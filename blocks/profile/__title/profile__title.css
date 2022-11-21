@@ -8,15 +8,7 @@
   white-space: nowrap;
   overflow: hidden;
   min-width: 250px;
-  max-width: 294px;
-}
-
-@media screen and (max-width: 568px) {
-  .profile__title {
-    font-size: 27px;
-    line-height: 33px;
-    margin: 0 0 8px 3px;
-  }
+  max-width: 290px;
 }
 
 @media screen and (max-width: 767px) {
@@ -29,8 +21,10 @@
 
 @media screen and (max-width: 568px) {
   .profile__title {
-    min-width: 189px;
-    max-width: 200px;
+    min-width: 185px;
+    max-width: 189px;
+    font-size: 27px;
+    line-height: 33px;
+    margin: 0 0 8px 3px;
   }
 }
-

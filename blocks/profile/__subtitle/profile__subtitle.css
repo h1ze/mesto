@@ -7,18 +7,19 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 336px;
+  max-width: 290px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .profile__subtitle {
-    max-width: 220px;
+    max-width: 230px;
   }
 }
 
 @media screen and (max-width: 568px) {
   .profile__subtitle {
     font-size: 14px;
+    max-width: 189px;
     line-height: 17px;
     margin-left: 19px;
   }
