@@ -1,4 +1,5 @@
 .popup__close {
+  padding: 0;
   border: none;
   background-image: url("../../../images/close.svg");
   background-color: transparent;
@@ -18,6 +19,7 @@
 
 @media screen and (max-width: 568px) {
   .popup__close {
+    background-image: url("../../../images/closeMobile.svg");
     width: 20px;
     height: 20px;
     right: 0px;
