@@ -7,24 +7,24 @@ const profileInfo = document.querySelector(".profile__subtitle");
 const inputName = formElement.querySelector(".form__input_value_name");
 const inputInfo = formElement.querySelector(".form__input_value_info");
 
-function popupOpen() {
+function openPopup () {
   popup.classList.add("popup_opened");
   inputName.value = profileName.textContent;
   inputInfo.value = profileInfo.textContent;
 }
 
-function popupClose() {
+function closePopup () {
   popup.classList.remove("popup_opened");
 }
 
-btnEdit.addEventListener("click", popupOpen);
- btnClose.addEventListener("click", popupClose);
+btnEdit.addEventListener("click", openPopup );
+ btnClose.addEventListener("click", closePopup );
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = inputName.value;
   profileInfo.textContent = inputInfo.value;
-  popupClose();
+  closePopup ();
 }
 
 formElement.addEventListener("submit", formSubmitHandler);
