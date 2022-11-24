@@ -17,8 +17,6 @@ function closePopup () {
   popup.classList.remove("popup_opened");
 }
 
-btnEdit.addEventListener("click", openPopup );
- btnClose.addEventListener("click", closePopup );
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -27,4 +25,7 @@ function formSubmitHandler(evt) {
   closePopup ();
 }
 
+
+btnEdit.addEventListener("click", openPopup );
+btnClose.addEventListener("click", closePopup );
 formElement.addEventListener("submit", formSubmitHandler);
