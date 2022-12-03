@@ -13,6 +13,7 @@ const inputTitle = formElementCard.querySelector(".form__input_value_title");
 const inputLink = formElementCard.querySelector(".form__input_value_link");
 const cardTemplate = document.querySelector("#card").content;
 const cardsList = document.querySelector(".elements__list");
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -62,8 +63,9 @@ function openPopup(evt) {
     inputInfo.value = profileInfo.textContent;
   } else {
     popupCard.classList.add("popup_opened");
+    inputLink.value = "";
+    inputTitle.value = "";
   }
-  
 }
 
 function closePopupProfile() {
@@ -98,3 +100,11 @@ btnCloseProfile.addEventListener("click", closePopupProfile );
 btnCloseCard.addEventListener("click", closePopupCard );
 formElementProfile.addEventListener("submit", formProfileSubmitHandler);
 formElementCard.addEventListener("submit", formCardSubmitHandler);
+
+const btnsLikes = Array.from(document.querySelectorAll(".element__button-like"));
+
+function likeCard(evt) {
+  evt.target.classList.add("element__button-like_active");
+}
+
+btnsLikes.forEach(btn => btn.addEventListener("click", likeCard));
