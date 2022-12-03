@@ -50,11 +50,6 @@ function fillCard(card) {
 
 initialCards.forEach(fillCard);
 
-// function openPopup () {
-//   popup.classList.add("popup_opened");
-//   inputName.value = profileName.textContent;
-//   inputInfo.value = profileInfo.textContent;
-// }
 
 function openPopup(evt) {
   if (evt.target === btnEdit) {
@@ -104,7 +99,15 @@ formElementCard.addEventListener("submit", formCardSubmitHandler);
 const btnsLikes = Array.from(document.querySelectorAll(".element__button-like"));
 
 function likeCard(evt) {
-  evt.target.classList.add("element__button-like_active");
+  evt.target.classList.toggle("element__button-like_active");
 }
 
 btnsLikes.forEach(btn => btn.addEventListener("click", likeCard));
+
+const btnsDelete = Array.from(document.querySelectorAll(".element__button-delete"));
+
+function deleteCard(evt) {
+  evt.target.parentElement.remove();
+}
+
+btnsDelete.forEach(btn => btn.addEventListener("click", deleteCard));
