@@ -3,7 +3,10 @@ const btnAdd = document.querySelector(".profile__btn-add");
 const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup_menu_profile");
 const popupCard = document.querySelector(".popup_menu_card");
-const [btnCloseProfile, btnCloseCard] = document.querySelectorAll(".popup__close");
+const popupImage = document.querySelector(".popup_menu_image");
+const popupContentImage = popupImage.querySelector(".popup__image");
+const popupContentCaption = popupImage.querySelector(".popup__caption");
+const [btnCloseProfile, btnCloseCard, btnCloseImage] = document.querySelectorAll(".popup__close");
 const [formElementProfile, formElementCard] = document.querySelectorAll(".form");
 const profileName = document.querySelector(".profile__title");
 const profileInfo = document.querySelector(".profile__subtitle");
@@ -56,10 +59,14 @@ function openPopup(evt) {
     popupProfile.classList.add("popup_opened");
     inputName.value = profileName.textContent;
     inputInfo.value = profileInfo.textContent;
-  } else {
+  } else if (evt.target === btnAdd) {
     popupCard.classList.add("popup_opened");
     inputLink.value = "";
     inputTitle.value = "";
+  } else {
+    popupImage.classList.add("popup_opened");
+    popupContentImage.src = evt.target.src;
+    popupContentCaption.textContent = evt.target.parentElement.querySelector(".element__title").textContent;
   }
 }
 
@@ -111,3 +118,15 @@ function deleteCard(evt) {
 }
 
 btnsDelete.forEach(btn => btn.addEventListener("click", deleteCard));
+
+// Прописываем логику открытия и закрытия попапа с картинкой
+
+const imagesElements= Array.from(document.querySelectorAll(".element__image"));
+
+imagesElements.forEach(image => image.addEventListener("click", openPopup)); 
+
+function closePopupImage() {
+  popupImage.classList.remove("popup_opened");
+}
+
+btnCloseImage.addEventListener('click', closePopupImage);
