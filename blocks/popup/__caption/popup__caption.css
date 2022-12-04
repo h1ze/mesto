@@ -1,0 +1,18 @@
+.popup__caption {
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFF;
+    max-width: 291px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 568px) {
+    .popup__caption {
+        max-width: 240px;
+    } 
+}
