@@ -103,6 +103,8 @@ btnCloseCard.addEventListener("click", closePopupCard );
 formElementProfile.addEventListener("submit", formProfileSubmitHandler);
 formElementCard.addEventListener("submit", formCardSubmitHandler);
 
+// Реализуем работу кнопки лайка
+
 const btnsLikes = Array.from(document.querySelectorAll(".element__button-like"));
 
 function likeCard(evt) {
@@ -110,6 +112,8 @@ function likeCard(evt) {
 }
 
 btnsLikes.forEach(btn => btn.addEventListener("click", likeCard));
+
+// Добавляем возможность удаления карточки
 
 const btnsDelete = Array.from(document.querySelectorAll(".element__button-delete"));
 
@@ -119,7 +123,7 @@ function deleteCard(evt) {
 
 btnsDelete.forEach(btn => btn.addEventListener("click", deleteCard));
 
-// Прописываем логику открытия и закрытия попапа с картинкой
+// Прописываем функционал попапа с картинкой
 
 const imagesElements= Array.from(document.querySelectorAll(".element__image"));
 
