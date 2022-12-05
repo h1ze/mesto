@@ -75,28 +75,13 @@ function fillCard(card) {
 initialCards.forEach(fillCard);
 
 
-function openPopup(evt) {
-  if (evt.target === btnEdit) {
-    popupProfile.classList.add("popup_opened");
-    inputName.value = profileName.textContent;
-    inputInfo.value = profileInfo.textContent;
-  } else if (evt.target === btnAdd) {
-    popupCard.classList.add("popup_opened");
-    inputLink.value = "";
-    inputTitle.value = "";
-  } else {
-    popupImage.classList.add("popup_opened");
-    popupContentImage.src = evt.target.src;
-    popupContentCaption.textContent = evt.target.parentElement.querySelector(".element__title").textContent;
-  }
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
 
-function closePopupProfile() {
-  popupProfile.classList.remove("popup_opened");
-}
-
-function closePopupCard() {
-  popupCard.classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
 
@@ -120,19 +105,11 @@ function formCardSubmitHandler(evt) {
 }
 
 
-btnEdit.addEventListener("click", openPopup );
-btnAdd.addEventListener("click", openPopup );
-btnCloseProfile.addEventListener("click", closePopupProfile );
-btnCloseCard.addEventListener("click", closePopupCard );
+btnEdit.addEventListener("click", () => openPopup(popupProfile));
+btnAdd.addEventListener("click", () => openPopup(popupCard));
+btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
+btnCloseCard.addEventListener("click", () => closePopup(popupCard));
+btnCloseImage.addEventListener('click', () => closePopup(popupImage));
 formElementProfile.addEventListener("submit", formProfileSubmitHandler);
 formElementCard.addEventListener("submit", formCardSubmitHandler);
-
-
-
-
-function closePopupImage() {
-  popupImage.classList.remove("popup_opened");
-}
-
-btnCloseImage.addEventListener('click', closePopupImage);
 
