@@ -44,6 +44,16 @@ const initialCards = [
   }
 ]; 
 
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
+
 function likeCard(evt) {
   evt.target.classList.toggle("element__button-like_active");
 }
@@ -51,6 +61,12 @@ function likeCard(evt) {
 function deleteCard(evt) {
   evt.target.parentElement.remove();
 }
+
+function enlargePicture(evt) {
+  openPopup(popupImage);
+  popupContentImage.src = evt.target.src; 
+  popupContentCaption.textContent = evt.target.parentElement.querySelector(".element__title").textContent; 
+} 
 
 function createCard(item) {
   // тут создаем карточку и возвращаем ее
@@ -62,7 +78,7 @@ function createCard(item) {
   const imageElement = cardElement.querySelector(".element__image");
   btnDelete.addEventListener("click", deleteCard);
   btnLike.addEventListener("click", likeCard);
-  imageElement.addEventListener("click", openPopup);
+  imageElement.addEventListener("click", enlargePicture);
   return cardElement;
 }
 
@@ -76,20 +92,14 @@ initialCards.forEach(fillCard);
 
 
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-}
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-}
 
 
 function formProfileSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = inputName.value;
   profileInfo.textContent = inputInfo.value;
-  closePopupProfile();
+  closePopup(popupProfile);
 }
 
 
@@ -101,7 +111,7 @@ function formCardSubmitHandler(evt) {
   newCardObject.name = inputTitle.value;
   const cardElement = createCard(newCardObject);
   cardsList.prepend(cardElement);
-  closePopupCard();
+  closePopup(popupCard);
 }
 
 
