@@ -44,10 +44,31 @@ const initialCards = [
   }
 ]; 
 
-function fillCard(card) {
+function likeCard(evt) {
+  evt.target.classList.toggle("element__button-like_active");
+}
+
+function deleteCard(evt) {
+  evt.target.parentElement.remove();
+}
+
+function createCard(item) {
+  // тут создаем карточку и возвращаем ее
   const cardElement = cardTemplate.querySelector(".element").cloneNode("true");
-  cardElement.querySelector(".element__image").src = card.link;
-  cardElement.querySelector(".element__title").textContent = card.name;
+  cardElement.querySelector(".element__image").src = item.link;
+  cardElement.querySelector(".element__title").textContent = item.name;
+  const btnDelete = cardElement.querySelector(".element__button-delete");
+  const btnLike = cardElement.querySelector(".element__button-like");
+  const imageElement = cardElement.querySelector(".element__image");
+  btnDelete.addEventListener("click", deleteCard);
+  btnLike.addEventListener("click", likeCard);
+  imageElement.addEventListener("click", openPopup);
+  return cardElement;
+}
+
+
+function fillCard(card) {
+  const cardElement = createCard(card);
   cardsList.append(cardElement);
 }
 
@@ -86,11 +107,14 @@ function formProfileSubmitHandler(evt) {
   closePopupProfile();
 }
 
+
+
 function formCardSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const cardElement = cardTemplate.querySelector(".element").cloneNode("true");
-  cardElement.querySelector(".element__image").src = inputLink.value;
-  cardElement.querySelector(".element__title").textContent = inputTitle.value;
+  const newCardObject = {};
+  newCardObject.link = inputLink.value;
+  newCardObject.name = inputTitle.value;
+  const cardElement = createCard(newCardObject);
   cardsList.prepend(cardElement);
   closePopupCard();
 }
@@ -103,34 +127,12 @@ btnCloseCard.addEventListener("click", closePopupCard );
 formElementProfile.addEventListener("submit", formProfileSubmitHandler);
 formElementCard.addEventListener("submit", formCardSubmitHandler);
 
-// Реализуем работу кнопки лайка
 
-const btnsLikes = Array.from(document.querySelectorAll(".element__button-like"));
 
-function likeCard(evt) {
-  evt.target.classList.toggle("element__button-like_active");
-}
-
-btnsLikes.forEach(btn => btn.addEventListener("click", likeCard));
-
-// Добавляем возможность удаления карточки
-
-const btnsDelete = Array.from(document.querySelectorAll(".element__button-delete"));
-
-function deleteCard(evt) {
-  evt.target.parentElement.remove();
-}
-
-btnsDelete.forEach(btn => btn.addEventListener("click", deleteCard));
-
-// Прописываем функционал попапа с картинкой
-
-const imagesElements= Array.from(document.querySelectorAll(".element__image"));
-
-imagesElements.forEach(image => image.addEventListener("click", openPopup)); 
 
 function closePopupImage() {
   popupImage.classList.remove("popup_opened");
 }
 
 btnCloseImage.addEventListener('click', closePopupImage);
+
