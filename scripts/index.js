@@ -88,12 +88,12 @@ function createCard(item) {
 }
 
 
-function fillCard(card) {
+function appendCard(card) {
   const cardElement = createCard(card);
   cardsList.append(cardElement);
 }
 
-initialCards.forEach(fillCard);
+initialCards.forEach(appendCard);
 
 
 
