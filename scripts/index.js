@@ -1,6 +1,5 @@
 const btnEdit = document.querySelector(".profile__btn-edit");
 const btnAdd = document.querySelector(".profile__btn-add");
-const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup_menu_profile");
 const popupCard = document.querySelector(".popup_menu_card");
 const popupImage = document.querySelector(".popup_menu_image");
