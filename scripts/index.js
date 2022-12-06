@@ -87,17 +87,12 @@ function createCard(item) {
   return cardElement;
 }
 
-
 function appendCard(card) {
   const cardElement = createCard(card);
   cardsList.append(cardElement);
 }
 
 initialCards.forEach(appendCard);
-
-
-
-
 
 
 function handleProfileFormSubmit(evt) {
@@ -107,18 +102,16 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfile);
 }
 
-
-
-function formCardSubmitHandler(evt) {
+function handleCardFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   const newCardObject = {};
   newCardObject.link = inputLink.value;
   newCardObject.name = inputTitle.value;
   const cardElement = createCard(newCardObject);
   cardsList.prepend(cardElement);
+  evt.target.reset();
   closePopup(popupCard);
 }
-
 
 btnEdit.addEventListener("click", () => {
   openPopup(popupProfile);
@@ -126,15 +119,10 @@ btnEdit.addEventListener("click", () => {
   inputInfo.value = profileInfo.textContent; 
 });
 
-btnAdd.addEventListener("click", () => {
-  openPopup(popupCard);
-  inputLink.value = ""; 
-  inputTitle.value = "";
-}); 
-
+btnAdd.addEventListener("click", () => openPopup(popupCard)); 
 btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
 btnCloseCard.addEventListener("click", () => closePopup(popupCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupImage));
 profileForm.addEventListener("submit", handleProfileFormSubmit);
-cardForm.addEventListener("submit", formCardSubmitHandler);
+cardForm.addEventListener("submit", handleCardFormSubmit);
 
