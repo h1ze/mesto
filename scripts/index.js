@@ -8,8 +8,8 @@ const popupContentCaption = popupImage.querySelector(".popup__caption");
 const btnCloseProfile = document.querySelector(".popup_close_profile");
 const btnCloseCard = document.querySelector(".popup_close_card");
 const btnCloseImage = document.querySelector(".popup_close_image");
-const profileForm = document.forms("profile-form");
-const cardForm = document.forms("card-form");
+const profileForm = document.forms["profile-form"];
+const cardForm = document.forms["card-form"];
 const profileName = document.querySelector(".profile__title");
 const profileInfo = document.querySelector(".profile__subtitle");
 const inputName = profileForm.querySelector(".form__input_value_name");
@@ -73,11 +73,12 @@ function enlargePicture(evt) {
 function createCard(item) {
   // тут создаем карточку и возвращаем ее
   const cardElement = cardTemplate.querySelector(".element").cloneNode("true");
-  cardElement.querySelector(".element__image").src = item.link;
+  const imageElement = cardElement.querySelector(".element__image");
+  imageElement.src = item.link;
+  imageElement.alt = item.name;
   cardElement.querySelector(".element__title").textContent = item.name;
   const btnDelete = cardElement.querySelector(".element__button-delete");
   const btnLike = cardElement.querySelector(".element__button-like");
-  const imageElement = cardElement.querySelector(".element__image");
   btnDelete.addEventListener("click", deleteCard);
   btnLike.addEventListener("click", likeCard);
   imageElement.addEventListener("click", enlargePicture);
