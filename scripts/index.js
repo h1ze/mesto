@@ -56,7 +56,7 @@ function closePopup(popup) {
 }
 
 
-function likeCard(evt) {
+function toggleLike(evt) {
   evt.target.classList.toggle("element__button-like_active");
 }
 
@@ -80,7 +80,7 @@ function createCard(item) {
   const btnDelete = cardElement.querySelector(".element__button-delete");
   const btnLike = cardElement.querySelector(".element__button-like");
   btnDelete.addEventListener("click", deleteCard);
-  btnLike.addEventListener("click", likeCard);
+  btnLike.addEventListener("click", toggleLike);
   imageElement.addEventListener("click", enlargePicture);
   return cardElement;
 }
