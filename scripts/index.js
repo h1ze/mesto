@@ -66,8 +66,10 @@ function deleteCard(evt) {
 
 function enlargePicture(evt) {
   openPopup(popupImage);
+  const imageName = evt.target.closest(".element").querySelector(".element__title").textContent; 
   popupContentImage.src = evt.target.src; 
-  popupContentCaption.textContent = evt.target.parentElement.querySelector(".element__title").textContent; 
+  popupContentImage.alt = imageName;
+  popupContentCaption.textContent =  imageName;
 } 
 
 function createCard(item) {
