@@ -100,7 +100,7 @@ initialCards.forEach(appendCard);
 
 
 
-function formProfileSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = inputName.value;
   profileInfo.textContent = inputInfo.value;
@@ -135,6 +135,6 @@ btnAdd.addEventListener("click", () => {
 btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
 btnCloseCard.addEventListener("click", () => closePopup(popupCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupImage));
-profileForm.addEventListener("submit", formProfileSubmitHandler);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", formCardSubmitHandler);
 
