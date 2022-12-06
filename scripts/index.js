@@ -61,7 +61,7 @@ function toggleLike(evt) {
 }
 
 function deleteCard(evt) {
-  evt.target.parentElement.remove();
+  evt.target.closest(".element").remove();
 }
 
 function enlargePicture(evt) {
