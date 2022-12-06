@@ -114,8 +114,18 @@ function formCardSubmitHandler(evt) {
 }
 
 
-btnEdit.addEventListener("click", () => openPopup(popupProfile));
-btnAdd.addEventListener("click", () => openPopup(popupCard));
+btnEdit.addEventListener("click", () => {
+  openPopup(popupProfile);
+  inputName.value = profileName.textContent; 
+  inputInfo.value = profileInfo.textContent; 
+});
+
+btnAdd.addEventListener("click", () => {
+  openPopup(popupCard);
+  inputLink.value = ""; 
+  inputTitle.value = "";
+}); 
+
 btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
 btnCloseCard.addEventListener("click", () => closePopup(popupCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupImage));
