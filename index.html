@@ -55,6 +55,7 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form form" name="profile-form">
               <input
+                id = "profile-name"
                 class="form__input form__input_value_name"
                 type="text"
                 value=""
@@ -65,7 +66,9 @@
                 maxlength="40"
                 required
                 />
+              <span class="profile-name-error form__input-error"></span>
               <input
+                id = "profile-info"
                 class="form__input form__input_value_info"
                 type="text"
                 value=""
@@ -76,6 +79,7 @@
                 maxlength="200"
                 required
                 />
+              <span class="profile-info-error form__input-error"></span>
               <button
                 class="form__button"
                 type="submit" tabindex="3"
@@ -148,5 +152,6 @@
       </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
