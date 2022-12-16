@@ -1,7 +1,7 @@
 .form__input {
   box-sizing: border-box;
   padding: 9px 0;
-  margin: 21px 0 0;
+  margin: 21px 0 5px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Inter", "Arial", sans-serif;

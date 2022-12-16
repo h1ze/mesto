@@ -95,21 +95,29 @@
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form form" name="card-form">
               <input
+                id="card-title"
                 class="form__input form__input_value_title"
                 type="text"
                 value=""
                 name="name"
                 tabindex="1"
                 placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required
                 />
+              <span class="card-title-error form__input-error"></span>
               <input
+                id="card-url"
                 class="form__input form__input_value_link"
-                type="text"
+                type="url"
                 value=""
                 name="info"
                 tabindex="2"
                 placeholder="Ссылка на картинку"
+                required
                 />
+              <span class="card-url-error form__input-error"></span>
               <button
                 class="form__button"
                 type="submit" tabindex="3"
