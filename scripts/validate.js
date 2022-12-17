@@ -51,7 +51,7 @@ enableValidation({
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_status_disabled',
     inputErrorClass: 'form__input_state_error',
-    errorClass: 'form__error_visible',
+    errorClass: 'form__error',
 });
 
 
