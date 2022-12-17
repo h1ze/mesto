@@ -1,0 +1,3 @@
+.form__input_state_error {
+    border-bottom: 1px solid #FF0000; /* красная рамка для некорректных данных */
+} 

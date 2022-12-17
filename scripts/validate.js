@@ -3,21 +3,20 @@ function checkInputValidity(input, config) {
     if (input.validity.valid) {
         //убрать ошибку
         error.textContent = '';
-        error.classList.remove(config.ErrorClass);
+        error.classList.remove(config.errorClass);
         input.classList.remove(config.inputErrorClass);
     } else {
         //показать ошибку
         error.textContent = input.validationMessage;
-        error.classList.add(config.ErrorClass);
-        input.classList.remove(config.inputErrorClass);
+        error.classList.add(config.errorClass);
+        input.classList.add(config.inputErrorClass);
     }
 };
 
 function toggleButton(inputs, button, config) {
-    const isFormValid = inputs.every(input =>  input.validity.valid);
+    const isFormValid = inputs.every(input => input.validity.valid);
     
     if (isFormValid) {
-        console.log("Отключить");
         button.classList.remove(config.inactiveButtonClass);
     } else {
         button.classList.add(config.inactiveButtonClass);
@@ -51,9 +50,9 @@ enableValidation({
     inputSelector: '.form__input',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_status_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-  });
+    inputErrorClass: 'form__input_state_error',
+    errorClass: 'form__error_visible',
+});
 
 
 

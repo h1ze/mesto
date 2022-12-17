@@ -13,6 +13,3 @@
   width: 100%;
 }
 
-.form__input:invalid {
-  border-bottom: 1px solid #FF0000; /* красная рамка для некорректных данных */
-} 
