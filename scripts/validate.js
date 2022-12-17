@@ -10,6 +10,7 @@ function checkInputValidity(input, config) {
         error.textContent = input.validationMessage;
         error.classList.add(config.errorClass);
         input.classList.add(config.inputErrorClass);
+        console.log(config.inputErrorClass);
     }
 };
 
