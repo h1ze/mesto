@@ -47,17 +47,21 @@ const initialCards = [
 ]; 
 
 
-
+//Открыть переданный попап и добавить слушатель кнопок
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener('keyup', handleEscUp);
 }
 
+// Закрыть переданный попап и удалить слушатель кнопок
+
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener('keyup', handleEscUp);
 }
+
+// Закрыть активный попап по ESC 
 
 function handleEscUp(evt) {
   if (evt.key === 'Escape') {
@@ -66,15 +70,19 @@ function handleEscUp(evt) {
   }
 }
 
-document.addEventListener('keyup', handleEscUp);
+// Переключения состояния активности лайка на карточке
 
 function toggleLike(evt) {
   evt.target.classList.toggle("element__button-like_active");
 }
 
+// Удаление карточки
+
 function deleteCard(evt) {
   evt.target.closest(".element").remove();
 }
+
+// Открытие попапа при клике на картинку
 
 function enlargePicture(evt) {
   openPopup(popupImage);
@@ -98,6 +106,9 @@ function createCard(item) {
   imageElement.addEventListener("click", enlargePicture);
   return cardElement;
 }
+
+
+// Добавление карточки в конец списка;
 
 function appendCard(card) {
   const cardElement = createCard(card);
