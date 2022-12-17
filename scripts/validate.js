@@ -50,7 +50,7 @@ enableValidation({
     formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.form__button',
-    inactiveButtonClass: '.form__button_status_disabled',
+    inactiveButtonClass: 'form__button_status_disabled',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
   });
