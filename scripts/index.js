@@ -47,14 +47,26 @@ const initialCards = [
 ]; 
 
 
+
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keyup', handleEscUp);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keyup', handleEscUp);
 }
 
+function handleEscUp(evt) {
+  if (evt.key === 'Escape') {
+    const targetClosePopup = document.querySelector('.popup_opened');
+    closePopup(targetClosePopup);
+  }
+}
+
+document.addEventListener('keyup', handleEscUp);
 
 function toggleLike(evt) {
   evt.target.classList.toggle("element__button-like_active");
@@ -113,8 +125,9 @@ function handleCardFormSubmit(evt) {
   closePopup(popupCard);
 }
 
-btnEdit.addEventListener("click", () => {
+btnEdit.addEventListener("click", (evt) => {
   openPopup(popupProfile);
+  handleEscUp(evt);
   inputName.value = profileName.textContent; 
   inputInfo.value = profileInfo.textContent; 
 });
