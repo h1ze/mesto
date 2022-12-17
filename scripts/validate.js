@@ -1,15 +1,15 @@
-
-
 function checkInputValidity(input, config) {
     const error = document.querySelector(`.${input.id}-error`);
     if (input.validity.valid) {
         //убрать ошибку
         error.textContent = '';
-        error.classList.remove(ErrorClass);
+        error.classList.remove(config.ErrorClass);
+        input.classList.remove(config.inputErrorClass);
     } else {
         //показать ошибку
         error.textContent = input.validationMessage;
-        error.classList.add(ErrorClass);
+        error.classList.add(config.ErrorClass);
+        input.classList.remove(config.inputErrorClass);
     }
 };
 
