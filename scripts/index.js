@@ -19,6 +19,7 @@ const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardTemplate = document.querySelector("#card").content;
 const cardsList = document.querySelector(".elements__list");
 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -65,8 +66,16 @@ function closePopup(popup) {
 
 function handleEscUp(evt) {
   if (evt.key === 'Escape') {
-    const targetClosePopup = document.querySelector('.popup_opened');
-    closePopup(targetClosePopup);
+    const currentOpenPopup = document.querySelector('.popup_opened');
+    closePopup(currentOpenPopup);
+  }
+}
+
+// Закрыть активный попап при клике вне формы
+
+function handleClickOutside(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
   }
 }
 
@@ -149,4 +158,10 @@ btnCloseCard.addEventListener("click", () => closePopup(popupCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupImage));
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);
+popupProfile.addEventListener('click', handleClickOutside);
+popupCard.addEventListener('click', handleClickOutside);
+popupImage.addEventListener('click', handleClickOutside);
+
+
+
 
