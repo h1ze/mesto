@@ -38,10 +38,6 @@ function enableValidation(config) {
         const inputs = [...form.querySelectorAll(config.inputSelector)];
         const button = form.querySelector(config.submitButtonSelector);
 
-        form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
-
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 checkInputValidity(input, config);
