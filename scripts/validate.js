@@ -1,16 +1,22 @@
+
+function hideError(input, error, config) {
+    error.textContent = '';
+    error.classList.remove(config.errorClass);
+    input.classList.remove(config.inputErrorClass);
+};
+
+function showError(input, error, config) {
+    error.textContent = input.validationMessage;
+    error.classList.add(config.errorClass);
+    input.classList.add(config.inputErrorClass);
+};
+
 function checkInputValidity(input, config) {
     const error = document.querySelector(`.${input.id}-error`);
     if (input.validity.valid) {
-        //убрать ошибку
-        error.textContent = '';
-        error.classList.remove(config.errorClass);
-        input.classList.remove(config.inputErrorClass);
+        hideError(input, error, config);
     } else {
-        //показать ошибку
-        error.textContent = input.validationMessage;
-        error.classList.add(config.errorClass);
-        input.classList.add(config.inputErrorClass);
-        console.log(config.inputErrorClass);
+        showError(input, error, config);
     }
 };
 
@@ -47,7 +53,3 @@ function enableValidation(config) {
 
 
 enableValidation(constConfig);
-
-
-
-
