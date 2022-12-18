@@ -1,7 +1,8 @@
 .form__input {
+  padding: 0;
   box-sizing: border-box;
-  padding: 9px 0;
-  margin: 21px 0 5px;
+  min-height: 30px;
+  margin: 0px 0 0px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Inter", "Arial", sans-serif;
