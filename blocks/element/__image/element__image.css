@@ -5,3 +5,7 @@
   background-color: #000;
   color: #fff;
 }
+
+.element__image:hover {
+  cursor: pointer;
+}
