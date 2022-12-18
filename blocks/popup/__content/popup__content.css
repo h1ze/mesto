@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 34px 36px 37px;
   background-color: #fff;
-  max-width: 430px;
+  width: 430px;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
