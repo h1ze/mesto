@@ -18,7 +18,6 @@ const inputTitle = cardForm.querySelector(".form__input_value_title");
 const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardTemplate = document.querySelector("#card").content;
 const cardsList = document.querySelector(".elements__list");
-const btnProfileSubmit = document.querySelector(".profile-submit");
 const btnCardSubmit = document.querySelector(".card-submit");
 
 
