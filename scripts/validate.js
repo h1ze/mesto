@@ -46,14 +46,7 @@ function enableValidation(config) {
 };
 
 
-enableValidation({
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_status_disabled',
-    inputErrorClass: 'form__input_state_error',
-    errorClass: 'form__error',
-});
+enableValidation(constConfig);
 
 
 
