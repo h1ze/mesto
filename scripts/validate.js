@@ -28,13 +28,9 @@ function toggleButton(inputs, button, config) {
     if (hasError(inputs)) {
         button.classList.add(config.inactiveButtonClass);
         button.disabled = 'disabled';
-        console.log(inputs);
-        console.log('Есть ошибка');
     } else {
         button.classList.remove(config.inactiveButtonClass);
         button.disabled = '';
-        console.log(inputs);
-        console.log('Нет ошибки');
     };
 };
 
