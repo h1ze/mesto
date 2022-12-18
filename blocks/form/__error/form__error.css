@@ -6,6 +6,7 @@
     font-size: 12px;
     line-height: 15px;
     color: #FF0000;
-    min-height: 30px;
+    margin-top: 5px;
+    min-height: 25px;
     visibility: hidden;
 }
