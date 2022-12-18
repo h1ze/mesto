@@ -68,7 +68,7 @@ function deleteCard(evt) {
 
 function enlargePicture(evt) {
   openPopup(popupImage);
-  const imageName = evt.target.closest(".element").querySelector(".element__title").textContent; 
+  const imageName = evt.target.alt;
   popupContentImage.src = evt.target.src; 
   popupContentImage.alt = imageName;
   popupContentCaption.textContent =  imageName;
