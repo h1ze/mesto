@@ -109,9 +109,10 @@ function handleProfileFormSubmit(evt) {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const newCardObject = {};
-  newCardObject.link = inputLink.value;
-  newCardObject.name = inputTitle.value;
+  const newCardObject = {
+    link: inputLink.value,
+    name: inputTitle.value,
+  };
   const cardElement = createCard(newCardObject);
   cardsList.prepend(cardElement);
   evt.target.reset();
