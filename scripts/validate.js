@@ -20,36 +20,41 @@ function checkInputValidity(input, config) {
     }
 };
 
+function hasError(inputs) {
+    return !inputs.every(input => input.validity.valid);
+};
+  
 function toggleButton(inputs, button, config) {
-    const isFormValid = inputs.every(input => input.validity.valid);
-    
-    if (isFormValid) {
-        button.classList.remove(config.inactiveButtonClass);
-        button.disabled = '';
-    } else {
+    if (hasError(inputs)) {
         button.classList.add(config.inactiveButtonClass);
         button.disabled = 'disabled';
+    } else {
+        button.classList.remove(config.inactiveButtonClass);
+        button.disabled = '';
     };
 };
 
-function setInputListeners() {
-
+function setEventListeners(form, config) {
+    const inputs = [...form.querySelectorAll(config.inputSelector)];
+    const button = form.querySelector(config.submitButtonSelector);
+    toggleButton(inputs,button,config);
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            checkInputValidity(input, config);
+            toggleButton(inputs,button,config);
+        })
+    });
+    form.addEventListener('reset', () => {
+        toggleButton(inputs,button,config);
+    })
 }
 
-            
+
+
 function enableValidation(config) {
     const forms = [...document.querySelectorAll(config.formSelector)];
-
     forms.forEach(form => {
-        const inputs = [...form.querySelectorAll(config.inputSelector)];
-        const button = form.querySelector(config.submitButtonSelector);
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                checkInputValidity(input, config);
-                toggleButton(inputs,button,config);
-            })
-        });
-        toggleButton(inputs,button,config);
+        setEventListeners(form, config);
     });
 };
 
