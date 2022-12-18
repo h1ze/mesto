@@ -32,6 +32,10 @@ function toggleButton(inputs, button, config) {
     };
 };
 
+function setInputListeners() {
+
+}
+
             
 function enableValidation(config) {
     const forms = [...document.querySelectorAll(config.formSelector)];
@@ -39,13 +43,13 @@ function enableValidation(config) {
     forms.forEach(form => {
         const inputs = [...form.querySelectorAll(config.inputSelector)];
         const button = form.querySelector(config.submitButtonSelector);
-
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 checkInputValidity(input, config);
                 toggleButton(inputs,button,config);
             })
         });
+        toggleButton(inputs,button,config);
     });
 };
 
