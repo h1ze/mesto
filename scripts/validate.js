@@ -28,25 +28,25 @@ function toggleButton(inputs, button, config) {
     if (hasError(inputs)) {
         button.classList.add(config.inactiveButtonClass);
         button.disabled = 'disabled';
+        console.log(inputs);
+        console.log('Есть ошибка');
     } else {
         button.classList.remove(config.inactiveButtonClass);
         button.disabled = '';
+        console.log(inputs);
+        console.log('Нет ошибки');
     };
 };
 
 function setEventListeners(form, config) {
     const inputs = [...form.querySelectorAll(config.inputSelector)];
     const button = form.querySelector(config.submitButtonSelector);
-    toggleButton(inputs,button,config);
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             checkInputValidity(input, config);
             toggleButton(inputs,button,config);
         })
     });
-    form.addEventListener('reset', () => {
-        toggleButton(inputs,button,config);
-    })
 }
 
 

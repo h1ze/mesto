@@ -18,6 +18,8 @@ const inputTitle = cardForm.querySelector(".form__input_value_title");
 const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardTemplate = document.querySelector("#card").content;
 const cardsList = document.querySelector(".elements__list");
+const btnProfileSubmit = document.querySelector(".profile-submit");
+const btnCardSubmit = document.querySelector(".card-submit");
 
 
 
@@ -125,7 +127,12 @@ btnEdit.addEventListener("click", (evt) => {
   inputInfo.value = profileInfo.textContent; 
 });
 
-btnAdd.addEventListener("click", () => openPopup(popupCard)); 
+btnAdd.addEventListener("click", () => {
+  openPopup(popupCard);
+  btnCardSubmit.classList.add(constConfig.inactiveButtonClass);
+  btnCardSubmit.disabled = "disabled";
+}); 
+
 btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
 btnCloseCard.addEventListener("click", () => closePopup(popupCard));
 btnCloseImage.addEventListener('click', () => closePopup(popupImage));
