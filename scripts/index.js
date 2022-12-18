@@ -121,7 +121,6 @@ function handleCardFormSubmit(evt) {
 
 btnEdit.addEventListener("click", (evt) => {
   openPopup(popupProfile);
-  handleEscUp(evt);
   inputName.value = profileName.textContent; 
   inputInfo.value = profileInfo.textContent; 
 });
