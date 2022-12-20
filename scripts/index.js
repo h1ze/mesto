@@ -128,8 +128,7 @@ btnEdit.addEventListener("click", (evt) => {
 
 btnAdd.addEventListener("click", () => {
   openPopup(popupCard);
-  btnCardSubmit.classList.add(constConfig.inactiveButtonClass);
-  btnCardSubmit.disabled = "disabled";
+  disableButton(btnCardSubmit, constConfig);
 }); 
 
 btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));

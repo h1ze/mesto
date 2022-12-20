@@ -23,14 +23,22 @@ function checkInputValidity(input, config) {
 function hasError(inputs) {
     return !inputs.every(input => input.validity.valid);
 };
-  
+
+function enableButton(button, config) {
+    button.classList.remove(config.inactiveButtonClass);
+    button.disabled = '';
+};
+
+function disableButton(button, config) {
+    button.classList.add(config.inactiveButtonClass);
+    button.disabled = 'disabled';
+};
+
 function toggleButton(inputs, button, config) {
     if (hasError(inputs)) {
-        button.classList.add(config.inactiveButtonClass);
-        button.disabled = 'disabled';
+        disableButton(button, config);
     } else {
-        button.classList.remove(config.inactiveButtonClass);
-        button.disabled = '';
+        enableButton(button, config);
     };
 };
 
