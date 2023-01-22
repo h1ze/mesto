@@ -1,4 +1,4 @@
-class Card {
+export class Card {
     constructor(data, templateSelector, enlargePicture) {
         this._name = data.name;
         this._link = data.link;
@@ -33,7 +33,7 @@ class Card {
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
 
-// Переключения состояния активности лайка на карточке
+// Переключение состояния активности лайка на карточке
     _toggleLike(btnLike) {
     btnLike.classList.toggle("element__button-like_active");
   }

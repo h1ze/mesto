@@ -1,3 +1,5 @@
+import {Card} from './Card.js';
+
 const btnEdit = document.querySelector(".profile__btn-edit");
 const btnAdd = document.querySelector(".profile__btn-add");
 const popupProfile = document.querySelector(".popup_menu_profile");
@@ -53,17 +55,17 @@ function handleClickOutside(evt) {
   }
 }
 
-// Переключения состояния активности лайка на карточке
+// // Переключения состояния активности лайка на карточке
 
-function toggleLike(evt) {
-  evt.target.classList.toggle("element__button-like_active");
-}
+// function toggleLike(evt) {
+//   evt.target.classList.toggle("element__button-like_active");
+// }
 
-// Удаление карточки
+// // Удаление карточки
 
-function deleteCard(evt) {
-  evt.target.closest(".element").remove();
-}
+// function deleteCard(evt) {
+//   evt.target.closest(".element").remove();
+// }
 
 // Открытие попапа при клике на картинку
 
@@ -74,18 +76,10 @@ function enlargePicture(name, link) {
   popupContentCaption.textContent = name;
 } 
 
-function createCard(item) {
-  // тут создаем карточку и возвращаем ее
-  const cardElement = cardTemplate.querySelector(".element").cloneNode("true");
-  const imageElement = cardElement.querySelector(".element__image");
-  imageElement.src = item.link;
-  imageElement.alt = item.name;
-  cardElement.querySelector(".element__title").textContent = item.name;
-  const btnDelete = cardElement.querySelector(".element__button-delete");
-  const btnLike = cardElement.querySelector(".element__button-like");
-  btnDelete.addEventListener("click", deleteCard);
-  btnLike.addEventListener("click", toggleLike);
-  imageElement.addEventListener("click", enlargePicture);
+
+// Создание экземпляра карточки
+function createCard(data) {
+  const cardElement = new Card(data, '.card', enlargePicture);
   return cardElement;
 }
 
