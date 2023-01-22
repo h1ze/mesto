@@ -55,17 +55,6 @@ function handleClickOutside(evt) {
   }
 }
 
-// // Переключения состояния активности лайка на карточке
-
-// function toggleLike(evt) {
-//   evt.target.classList.toggle("element__button-like_active");
-// }
-
-// // Удаление карточки
-
-// function deleteCard(evt) {
-//   evt.target.closest(".element").remove();
-// }
 
 // Открытие попапа при клике на картинку
 
@@ -79,7 +68,8 @@ function enlargePicture(name, link) {
 
 // Создание экземпляра карточки
 function createCard(data) {
-  const cardElement = new Card(data, '.card', enlargePicture);
+  const cardObj = new Card(data, '#card', enlargePicture);
+  const cardElement =  cardObj.createCard();
   return cardElement;
 }
 
