@@ -1,9 +1,9 @@
 class Card {
-    constructor(data, templateSelector, handleClick) {
+    constructor(data, templateSelector, enlargePicture) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._handleClick = handleClick;
+        this._enlargePicture = enlargePicture;
     }
 
 // Получаем разметку карточки
@@ -14,42 +14,35 @@ class Card {
 
 
 // заполняем разметку карточку и возвращаем ее
-
     createCard() {
-        this._element = _getElement();
+        this._element = this._getElement();
         const imageElement = this._element.querySelector(".element__image");
+        const btnDelete = this._element.querySelector(".element__button-delete");
+        const btnLike = this._element.querySelector(".element__button-like");
         imageElement.src = this._link;
         imageElement.alt = this._name;
         this._element.querySelector(".element__title").textContent = this._name;
-        const btnDelete = this._element.querySelector(".element__button-delete");
-        const btnLike = this._element.querySelector(".element__button-like");
-        btnDelete.addEventListener("click", deleteCard);
-        btnLike.addEventListener("click", toggleLike);
-        imageElement.addEventListener("click", enlargePicture);
+        this._setEventListeners(imageElement, btnDelete, btnLike);
         return this._element;
       }
 
+    _setEventListeners(imageElement, btnDelete, btnLike) {
+        imageElement.addEventListener("click", () => {this._enlargePicture});
+        btnDelete.addEventListener('click', () => {this._deleteCard});
+        btnLike.addEventListener('click', () => this._toggleLike(btnLike));
+    }
 
- // Открытие попапа при клике на картинку
-        enlargePicture(evt) {
-        openPopup(popupImage);
-        const imageName = evt.target.alt;
-        popupContentImage.src = evt.target.src; 
-        popupContentImage.alt = imageName;
-        popupContentCaption.textContent =  imageName;
-      } 
+
 
 
 // Переключения состояния активности лайка на карточке
-
-toggleLike(evt) {
-    evt.target.classList.toggle("element__button-like_active");
+    _toggleLike(btnLike) {
+    btnLike.classList.toggle("element__button-like_active");
   }
   
-  // Удаление карточки
-  
-deleteCard(evt) {
-    evt.target.closest(".element").remove();
+// Удаление карточки 
+    _deleteCard() {
+    this._element.remove();
   }
 
 
