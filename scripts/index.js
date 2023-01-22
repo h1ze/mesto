@@ -67,12 +67,11 @@ function deleteCard(evt) {
 
 // Открытие попапа при клике на картинку
 
-function enlargePicture(evt) {
+function enlargePicture(name, link) {
   openPopup(popupImage);
-  const imageName = evt.target.alt;
-  popupContentImage.src = evt.target.src; 
-  popupContentImage.alt = imageName;
-  popupContentCaption.textContent =  imageName;
+  popupContentImage.src = link; 
+  popupContentImage.alt = name;
+  popupContentCaption.textContent = name;
 } 
 
 function createCard(item) {

@@ -13,7 +13,7 @@ class Card {
     }
 
 
-// заполняем разметку карточку и возвращаем ее
+// Заполняем разметку карточки, вызываем добавление обработчиков и возвращаем готовую карточку
     createCard() {
         this._element = this._getElement();
         const imageElement = this._element.querySelector(".element__image");
@@ -26,14 +26,12 @@ class Card {
         return this._element;
       }
 
+// Навешиваем обработчики на элементы карточки
     _setEventListeners(imageElement, btnDelete, btnLike) {
-        imageElement.addEventListener("click", () => {this._enlargePicture});
+        imageElement.addEventListener("click", () => {this._enlargePicture(this.name, this.link)});
         btnDelete.addEventListener('click', () => {this._deleteCard});
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
-
-
-
 
 // Переключения состояния активности лайка на карточке
     _toggleLike(btnLike) {
