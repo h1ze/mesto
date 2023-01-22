@@ -1,4 +1,5 @@
 import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 const btnEdit = document.querySelector(".profile__btn-edit");
 const btnAdd = document.querySelector(".profile__btn-add");
@@ -18,9 +19,45 @@ const inputName = profileForm.querySelector(".form__input_value_name");
 const inputInfo = profileForm.querySelector(".form__input_value_info");
 const inputTitle = cardForm.querySelector(".form__input_value_title");
 const inputLink = cardForm.querySelector(".form__input_value_link");
-const cardTemplate = document.querySelector("#card").content;
 const cardsList = document.querySelector(".elements__list");
 const btnCardSubmit = document.querySelector(".card-submit");
+
+// Массив карточек
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+]; 
+
+
+// создать формы с валидацией
+
+const editProfileForm = new FormValidator(profileForm);
+editProfileForm.enableValidation();
+
+const addCardForm = new FormValidator(cardForm);
+addCardForm.enableValidation();
 
 
 
