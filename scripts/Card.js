@@ -28,8 +28,8 @@ export class Card {
 
 // Навешиваем обработчики на элементы карточки
     _setEventListeners(imageElement, btnDelete, btnLike) {
-        imageElement.addEventListener("click", () => {this._enlargePicture(this.name, this.link)});
-        btnDelete.addEventListener('click', () => {this._deleteCard});
+        imageElement.addEventListener("click", () => this._enlargePicture(this._name, this._link));
+        btnDelete.addEventListener('click', () => this._deleteCard());
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
 
