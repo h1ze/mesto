@@ -164,14 +164,13 @@ btnAdd.addEventListener("click", () => {
 
 buttonCloseList.forEach(btn => {
   const currentOpenPopup = btn.closest('.popup');
+  currentOpenPopup.addEventListener('mousedown', handleClickOutside);
   btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
 }) 
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);
-popupProfile.addEventListener('click', handleClickOutside);
-popupCard.addEventListener('click', handleClickOutside);
-popupImage.addEventListener('click', handleClickOutside);
+
 
 
 
