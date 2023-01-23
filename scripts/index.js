@@ -8,9 +8,10 @@ const popupCard = document.querySelector(".popup_menu_card");
 const popupImage = document.querySelector(".popup_menu_image");
 const popupContentImage = popupImage.querySelector(".popup__image");
 const popupContentCaption = popupImage.querySelector(".popup__caption");
-const btnCloseProfile = document.querySelector(".btn-shut-profile");
-const btnCloseCard = document.querySelector(".btn-shut-card");
-const btnCloseImage = document.querySelector(".btn-shut-image");
+const buttonCloseList = document.querySelectorAll('.popup__close'); 
+
+
+
 const profileForm = document.forms["profile-form"];
 const cardForm = document.forms["card-form"];
 const profileName = document.querySelector(".profile__title");
@@ -161,9 +162,11 @@ btnAdd.addEventListener("click", () => {
   disableButton(btnCardSubmit, constConfig);
 }); 
 
-btnCloseProfile.addEventListener("click", () => closePopup(popupProfile));
-btnCloseCard.addEventListener("click", () => closePopup(popupCard));
-btnCloseImage.addEventListener('click', () => closePopup(popupImage));
+buttonCloseList.forEach(btn => {
+  const currentOpenPopup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
+}) 
+
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);
 popupProfile.addEventListener('click', handleClickOutside);
