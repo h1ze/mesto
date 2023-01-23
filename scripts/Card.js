@@ -4,25 +4,20 @@ export class Card {
         this._link = data.link;
         this._templateSelector = templateSelector;
         this._enlargePicture = enlargePicture;
+        this._element = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode('true');
+        this._imageElement = this._element.querySelector(".element__image");
+        this._btnDelete = this._element.querySelector(".element__button-delete");
+        this._btnLike = this._element.querySelector(".element__button-like");
     }
 
-// Получаем разметку карточки
-    _getElement() {
-        const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode('true');
-        return cardElement;
-    }
 
 
 // Заполняем разметку карточки, вызываем добавление обработчиков и возвращаем готовую карточку
     createCard() {
-        this._element = this._getElement();
-        const imageElement = this._element.querySelector(".element__image");
-        const btnDelete = this._element.querySelector(".element__button-delete");
-        const btnLike = this._element.querySelector(".element__button-like");
-        imageElement.src = this._link;
-        imageElement.alt = this._name;
+        this._imageElement.src = this._link;
+        this._imageElement.alt = this._name;
         this._element.querySelector(".element__title").textContent = this._name;
-        this._setEventListeners(imageElement, btnDelete, btnLike);
+        this._setEventListeners(this._imageElement, this._btnDelete, this._btnLike);
         return this._element;
       }
 
