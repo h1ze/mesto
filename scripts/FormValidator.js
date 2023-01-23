@@ -1,27 +1,25 @@
 export class FormValidator {
-    static config = {
-        formSelector: '.form',
-        inputSelector: '.form__input',
-        submitButtonSelector: '.form__button',
-        inactiveButtonClass: 'form__button_status_disabled',
-        inputErrorClass: 'form__input_state_error',
-        errorClass: 'form__error_active',
-    }
 
-    constructor(form) {
+
+    constructor(form, config) {
         this._form = form;
+        this._errorClass = config.errorClass;
+        this._inputErrorClass = config.inputErrorClass;
+        this._inactiveButtonClass = config.inactiveButtonClass;
+        this._inputSelector = config.inputSelector;
+        this._submitButtonSelector = config.submitButtonSelector;
     }
 
     _hideError(input, error) {
         error.textContent = '';
-        error.classList.remove(FormValidator.config.errorClass);
-        input.classList.remove(FormValidator.config.inputErrorClass);
+        error.classList.remove(this._errorClass);
+        input.classList.remove(this._inputErrorClass);
     };
 
     _showError(input, error) {
         error.textContent = input.validationMessage;
-        error.classList.add(FormValidator.config.errorClass);
-        input.classList.add(FormValidator.config.inputErrorClass);
+        error.classList.add(this._errorClass);
+        input.classList.add(this._inputErrorClass);
     };
 
     _checkInputValidity(input) {
@@ -38,12 +36,12 @@ export class FormValidator {
     };
 
     _enableButton(button) {
-        button.classList.remove(FormValidator.config.inactiveButtonClass);
+        button.classList.remove(this._inactiveButtonClass);
         button.disabled = '';
     };
     
     _disableButton(button) {
-        button.classList.add(FormValidator.config.inactiveButtonClass);
+        button.classList.add(this._inactiveButtonClass);
         button.disabled = 'disabled';
     };
 
@@ -56,8 +54,8 @@ export class FormValidator {
     };
 
     _setEventListeners(form) {
-        const inputs = [...form.querySelectorAll(FormValidator.config.inputSelector)];
-        const button = form.querySelector(FormValidator.config.submitButtonSelector);
+        const inputs = [...form.querySelectorAll(this._inputSelector)];
+        const button = form.querySelector(this._submitButtonSelector);
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 this._checkInputValidity(input);

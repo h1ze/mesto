@@ -22,6 +22,16 @@ const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardsList = document.querySelector(".elements__list");
 const btnCardSubmit = document.querySelector(".card-submit");
 
+
+const constConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_status_disabled',
+  inputErrorClass: 'form__input_state_error',
+  errorClass: 'form__error_active',
+};
+
 // Массив карточек
 const initialCards = [
   {
@@ -53,10 +63,10 @@ const initialCards = [
 
 // создать формы с валидацией
 
-const editProfileForm = new FormValidator(profileForm);
+const editProfileForm = new FormValidator(profileForm, constConfig);
 editProfileForm.enableValidation();
 
-const addCardForm = new FormValidator(cardForm);
+const addCardForm = new FormValidator(cardForm, constConfig);
 addCardForm.enableValidation();
 
 
