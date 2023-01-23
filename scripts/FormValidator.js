@@ -38,7 +38,7 @@ export class FormValidator {
     };
 
     _enableButton() {
-        this._button.remove(this._inactiveButtonClass);
+        this._button.classList.remove(this._inactiveButtonClass);
         this._button.disabled = '';
     };
     
@@ -68,7 +68,7 @@ export class FormValidator {
     resetValidation() {
         this._toggleButton(); 
         this._inputs.forEach((input) => {
-          this._hideError(input);
+            this._checkInputValidity(input);
         });
     } 
 
