@@ -63,11 +63,11 @@ const initialCards = [
 
 // создать формы с валидацией
 
-const editProfileForm = new FormValidator(profileForm, constConfig);
-editProfileForm.enableValidation();
+const formProfileEdit = new FormValidator(profileForm, constConfig);
+formProfileEdit.enableValidation();
 
-const addCardForm = new FormValidator(cardForm, constConfig);
-addCardForm.enableValidation();
+const formCardAdd = new FormValidator(cardForm, constConfig);
+formCardAdd.enableValidation();
 
 
 
