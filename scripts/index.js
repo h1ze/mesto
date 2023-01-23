@@ -64,14 +64,10 @@ const initialCards = [
 // создать формы с валидацией
 
 const formProfileEdit = new FormValidator(profileForm, constConfig);
-formProfileEdit.resetValidation();
 formProfileEdit.enableValidation();
 
 const formCardAdd = new FormValidator(cardForm, constConfig);
-formCardAdd.resetValidation();
 formCardAdd.enableValidation();
-
-
 
 //Открыть переданный попап и добавить слушатель кнопок
 
@@ -155,12 +151,13 @@ function handleCardFormSubmit(evt) {
 btnEditProfile.addEventListener("click", (evt) => {
   openPopup(popupProfile);
   inputName.value = profileName.textContent; 
-  inputInfo.value = profileInfo.textContent; 
+  inputInfo.value = profileInfo.textContent;
+  formProfileEdit.resetValidation(); 
 });
 
 btnAddCard.addEventListener("click", () => {
-  formCardAdd.resetValidation();
   openPopup(popupCard);
+  formCardAdd.resetValidation();
 }); 
 
 buttonCloseList.forEach(btn => {
