@@ -1,8 +1,8 @@
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
-const btnEdit = document.querySelector(".profile__btn-edit");
-const btnAdd = document.querySelector(".profile__btn-add");
+const btnEditProfile = document.querySelector(".profile__btn-edit");
+const btnAddCard = document.querySelector(".profile__btn-add");
 const popupProfile = document.querySelector(".popup_menu_profile");
 const popupCard = document.querySelector(".popup_menu_card");
 const popupImage = document.querySelector(".popup_menu_image");
@@ -21,7 +21,6 @@ const inputInfo = profileForm.querySelector(".form__input_value_info");
 const inputTitle = cardForm.querySelector(".form__input_value_title");
 const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardsList = document.querySelector(".elements__list");
-const btnCardSubmit = document.querySelector(".card-submit");
 
 
 const constConfig = {
@@ -65,9 +64,11 @@ const initialCards = [
 // создать формы с валидацией
 
 const formProfileEdit = new FormValidator(profileForm, constConfig);
+formProfileEdit.resetValidation();
 formProfileEdit.enableValidation();
 
 const formCardAdd = new FormValidator(cardForm, constConfig);
+formCardAdd.resetValidation();
 formCardAdd.enableValidation();
 
 
@@ -151,15 +152,15 @@ function handleCardFormSubmit(evt) {
   closePopup(popupCard);
 }
 
-btnEdit.addEventListener("click", (evt) => {
+btnEditProfile.addEventListener("click", (evt) => {
   openPopup(popupProfile);
   inputName.value = profileName.textContent; 
   inputInfo.value = profileInfo.textContent; 
 });
 
-btnAdd.addEventListener("click", () => {
+btnAddCard.addEventListener("click", () => {
+  formCardAdd.resetValidation();
   openPopup(popupCard);
-  disableButton(btnCardSubmit, constConfig);
 }); 
 
 buttonCloseList.forEach(btn => {
