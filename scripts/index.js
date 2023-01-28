@@ -1,5 +1,8 @@
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { Card}  from './Card.js';
+import { FormValidator } from './FormValidator.js';
+import { Section } from './Section.js';
+import { Popup } from './Popup.js';
+import { PopupWithImage } from './PopupWithImage.js';
 
 const btnEditProfile = document.querySelector(".profile__btn-edit");
 const btnAddCard = document.querySelector(".profile__btn-add");
@@ -69,6 +72,18 @@ formProfileEdit.enableValidation();
 const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
+
+// Проверка класса Popup
+// const popupProfileClass = new Popup(".popup_menu_profile");
+// popupProfileClass.setEventListeners();
+// console.log(popupProfileClass);
+
+// Проверка класса PopupWithImage
+
+const popupWithImageClass = new PopupWithImage('.popup_menu_image');
+popupWithImageClass.setEventListeners();
+
+
 //Открыть переданный попап и добавить слушатель кнопок
 
 function openPopup(popup) {
@@ -103,17 +118,17 @@ function handleClickOutside(evt) {
 
 // Открытие попапа при клике на картинку
 
-function enlargePicture(name, link) {
-  openPopup(popupImage);
-  popupContentImage.src = link; 
-  popupContentImage.alt = name;
-  popupContentCaption.textContent = name;
-} 
+// function enlargePicture(name, link) {
+//   openPopup(popupImage);
+//   popupContentImage.src = link; 
+//   popupContentImage.alt = name;
+//   popupContentCaption.textContent = name;
+// } 
 
 
 // Создание экземпляра карточки
 function createCard(data) {
-  const cardObj = new Card(data, '#card', enlargePicture);
+  const cardObj = new Card(data, '#card', PopupWithImage.open);
   const cardElement =  cardObj.createCard();
   return cardElement;
 }
@@ -155,16 +170,16 @@ btnEditProfile.addEventListener("click", (evt) => {
   formProfileEdit.resetValidation(); 
 });
 
-btnAddCard.addEventListener("click", () => {
-  openPopup(popupCard);
-  formCardAdd.resetValidation();
-}); 
+// btnAddCard.addEventListener("click", () => {
+//   openPopup(popupCard);
+//   formCardAdd.resetValidation();
+// }); 
 
-buttonCloseList.forEach(btn => {
-  const currentOpenPopup = btn.closest('.popup');
-  currentOpenPopup.addEventListener('mousedown', handleClickOutside);
-  btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
-}) 
+// buttonCloseList.forEach(btn => {
+//   const currentOpenPopup = btn.closest('.popup');
+//   currentOpenPopup.addEventListener('mousedown', handleClickOutside);
+//   btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
+// }) 
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);

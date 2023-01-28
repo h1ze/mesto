@@ -1,9 +1,9 @@
 export class Card {
-    constructor(data, templateSelector, enlargePicture) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._enlargePicture = enlargePicture;
+        this._handleCardClick = handleCardClick;
         this._element = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode('true');
         this._imageElement = this._element.querySelector(".element__image");
         this._btnDelete = this._element.querySelector(".element__button-delete");
@@ -23,7 +23,7 @@ export class Card {
 
 // Навешиваем обработчики на элементы карточки
     _setEventListeners(imageElement, btnDelete, btnLike) {
-        imageElement.addEventListener("click", () => this._enlargePicture(this._name, this._link));
+        imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
         btnDelete.addEventListener('click', () => this._deleteCard());
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
