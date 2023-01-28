@@ -128,7 +128,7 @@ function handleClickOutside(evt) {
 
 // Создание экземпляра карточки
 function createCard(data) {
-  const cardObj = new Card(data, '#card', PopupWithImage.open);
+  const cardObj = new Card(data, '#card', () => popupWithImageClass.open(data.name, data.link));
   const cardElement =  cardObj.createCard();
   return cardElement;
 }
