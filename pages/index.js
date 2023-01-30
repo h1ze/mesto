@@ -8,7 +8,7 @@ import { UserInfo } from '../components/UserInfo.js';
 
 const btnEditProfile = document.querySelector(".profile__btn-edit");
 const btnAddCard = document.querySelector(".profile__btn-add");
-const popupProfile = document.querySelector(".popup_menu_profile");
+// const popupProfile = document.querySelector(".popup_menu_profile");
 const popupCard = document.querySelector(".popup_menu_card");
 const popupImage = document.querySelector(".popup_menu_image");
 const popupContentImage = popupImage.querySelector(".popup__image");
@@ -65,6 +65,12 @@ const initialCards = [
   }
 ]; 
 
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__title',
+  userDescriptionSelector: '.profile__subtitle',
+});
+
+
 
 // создать формы с валидацией
 
@@ -82,40 +88,53 @@ formCardAdd.enableValidation();
 
 // Проверка класса PopupWithImage
 
-const popupWithImageClass = new PopupWithImage('.popup_menu_image');
-popupWithImageClass.setEventListeners();
+const popupWithImage = new PopupWithImage('.popup_menu_image');
+popupWithImage.setEventListeners();
 
+
+// Проверка класса PopupWithForm 
+
+
+const popupProfile = new PopupWithForm({
+  popupSelector:'.popup_menu_profile', 
+  handleFormSubmit: (formValues) => {
+    console.log(formValues);
+    userInfo.setUserInfo(formValues);
+    popupProfile.close();
+  },
+});
+popupProfile.setEventListeners();
 
 //Открыть переданный попап и добавить слушатель кнопок
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener('keyup', handleEscUp);
-}
+// function openPopup(popup) {
+//   popup.classList.add("popup_opened");
+//   document.addEventListener('keyup', handleEscUp);
+// }
 
 // Закрыть переданный попап и удалить слушатель кнопок
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener('keyup', handleEscUp);
-}
+// function closePopup(popup) {
+//   popup.classList.remove("popup_opened");
+//   document.removeEventListener('keyup', handleEscUp);
+// }
 
 // Закрыть активный попап по ESC 
 
-function handleEscUp(evt) {
-  if (evt.key === 'Escape') {
-    const currentOpenPopup = document.querySelector('.popup_opened');
-    closePopup(currentOpenPopup);
-  }
-}
+// function handleEscUp(evt) {
+//   if (evt.key === 'Escape') {
+//     const currentOpenPopup = document.querySelector('.popup_opened');
+//     closePopup(currentOpenPopup);
+//   }
+// }
 
 // Закрыть активный попап при клике вне формы
 
-function handleClickOutside(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.currentTarget);
-  }
-}
+// function handleClickOutside(evt) {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(evt.currentTarget);
+//   }
+// }
 
 
 // Открытие попапа при клике на картинку
@@ -130,7 +149,7 @@ function handleClickOutside(evt) {
 
 // Создание экземпляра карточки
 function createCard(data) {
-  const cardObj = new Card(data, '#card', () => popupWithImageClass.open(data.name, data.link));
+  const cardObj = new Card(data, '#card', () => popupWithImage.open(data.name, data.link));
   const cardElement =  cardObj.createCard();
   return cardElement;
 }
@@ -146,12 +165,7 @@ function appendCard(card) {
 initialCards.forEach(appendCard);
 
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  profileName.textContent = inputName.value;
-  profileInfo.textContent = inputInfo.value;
-  closePopup(popupProfile);
-}
+
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -166,14 +180,15 @@ function handleCardFormSubmit(evt) {
 }
 
 btnEditProfile.addEventListener("click", (evt) => {
-  openPopup(popupProfile);
-  inputName.value = profileName.textContent; 
-  inputInfo.value = profileInfo.textContent;
+  popupProfile.open();
+  const inputsProfileValues = userInfo.getUserInfo();
+  inputName.value = inputsProfileValues.name; 
+  inputInfo.value = inputsProfileValues.description;
   formProfileEdit.resetValidation(); 
 });
 
 // btnAddCard.addEventListener("click", () => {
-//   openPopup(popupCard);
+//   popupWithForm.open();
 //   formCardAdd.resetValidation();
 // }); 
 
@@ -183,9 +198,8 @@ btnEditProfile.addEventListener("click", (evt) => {
 //   btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
 // }) 
 
-profileForm.addEventListener("submit", handleProfileFormSubmit);
-cardForm.addEventListener("submit", handleCardFormSubmit);
-
+// profileForm.addEventListener("submit", handleProfileFormSubmit);
+// cardForm.addEventListener("submit", handleCardFormSubmit);
 
 
 
