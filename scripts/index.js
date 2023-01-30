@@ -3,6 +3,8 @@ import { FormValidator } from './FormValidator.js';
 import { Section } from './Section.js';
 import { Popup } from './Popup.js';
 import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
 
 const btnEditProfile = document.querySelector(".profile__btn-edit");
 const btnAddCard = document.querySelector(".profile__btn-add");
