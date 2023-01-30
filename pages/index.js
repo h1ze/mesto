@@ -98,7 +98,6 @@ popupWithImage.setEventListeners();
 const popupProfile = new PopupWithForm({
   popupSelector:'.popup_menu_profile', 
   handleFormSubmit: (formValues) => {
-    console.log(formValues);
     userInfo.setUserInfo(formValues);
     popupProfile.close();
   },
