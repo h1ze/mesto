@@ -65,6 +65,8 @@ const initialCards = [
   }
 ]; 
 
+// создание обьекта с редактируемыми текстовыми полями профиля
+
 const userInfo = new UserInfo({
   userNameSelector: '.profile__title',
   userDescriptionSelector: '.profile__subtitle',
@@ -81,18 +83,14 @@ const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
 
-// Проверка класса Popup
-// const popupProfileClass = new Popup(".popup_menu_profile");
-// popupProfileClass.setEventListeners();
-// console.log(popupProfileClass);
 
-// Проверка класса PopupWithImage
+
+// Создание попапа с увеличенным изображением
 
 const popupWithImage = new PopupWithImage('.popup_menu_image');
 popupWithImage.setEventListeners();
 
 
-// Проверка класса PopupWithForm 
 
 // Создание попапа редактирования профиля
 
@@ -117,46 +115,6 @@ const popupCard = new PopupWithForm({
 })
 popupCard.setEventListeners();
 
-//Открыть переданный попап и добавить слушатель кнопок
-
-// function openPopup(popup) {
-//   popup.classList.add("popup_opened");
-//   document.addEventListener('keyup', handleEscUp);
-// }
-
-// Закрыть переданный попап и удалить слушатель кнопок
-
-// function closePopup(popup) {
-//   popup.classList.remove("popup_opened");
-//   document.removeEventListener('keyup', handleEscUp);
-// }
-
-// Закрыть активный попап по ESC 
-
-// function handleEscUp(evt) {
-//   if (evt.key === 'Escape') {
-//     const currentOpenPopup = document.querySelector('.popup_opened');
-//     closePopup(currentOpenPopup);
-//   }
-// }
-
-// Закрыть активный попап при клике вне формы
-
-// function handleClickOutside(evt) {
-//   if (evt.target === evt.currentTarget) {
-//     closePopup(evt.currentTarget);
-//   }
-// }
-
-
-// Открытие попапа при клике на картинку
-
-// function enlargePicture(name, link) {
-//   openPopup(popupImage);
-//   popupContentImage.src = link; 
-//   popupContentImage.alt = name;
-//   popupContentCaption.textContent = name;
-// } 
 
 
 // Создание экземпляра карточки
@@ -203,15 +161,6 @@ btnAddCard.addEventListener("click", () => {
   popupCard.open();
   formCardAdd.resetValidation();
 }); 
-
-// buttonCloseList.forEach(btn => {
-//   const currentOpenPopup = btn.closest('.popup');
-//   currentOpenPopup.addEventListener('mousedown', handleClickOutside);
-//   btn.addEventListener('click', () => closePopup(currentOpenPopup)); 
-// }) 
-
-// profileForm.addEventListener("submit", handleProfileFormSubmit);
-// cardForm.addEventListener("submit", handleCardFormSubmit);
 
 
 
