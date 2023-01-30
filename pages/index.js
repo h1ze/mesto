@@ -9,7 +9,7 @@ import { UserInfo } from '../components/UserInfo.js';
 const btnEditProfile = document.querySelector(".profile__btn-edit");
 const btnAddCard = document.querySelector(".profile__btn-add");
 // const popupProfile = document.querySelector(".popup_menu_profile");
-const popupCard = document.querySelector(".popup_menu_card");
+// const popupCard = document.querySelector(".popup_menu_card");
 const popupImage = document.querySelector(".popup_menu_image");
 const popupContentImage = popupImage.querySelector(".popup__image");
 const popupContentCaption = popupImage.querySelector(".popup__caption");
@@ -94,6 +94,7 @@ popupWithImage.setEventListeners();
 
 // Проверка класса PopupWithForm 
 
+// Создание попапа редактирования профиля
 
 const popupProfile = new PopupWithForm({
   popupSelector:'.popup_menu_profile', 
@@ -103,6 +104,18 @@ const popupProfile = new PopupWithForm({
   },
 });
 popupProfile.setEventListeners();
+
+// Создание попапа добавления карточки
+
+const popupCard = new PopupWithForm({
+  popupSelector: '.popup_menu_card',
+  handleFormSubmit: (formValues) => {
+    const cardElement = createCard(formValues);
+    cardsList.prepend(cardElement);
+    popupCard.close();
+  }
+})
+popupCard.setEventListeners();
 
 //Открыть переданный попап и добавить слушатель кнопок
 
@@ -166,17 +179,17 @@ initialCards.forEach(appendCard);
 
 
 
-function handleCardFormSubmit(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const newCardObject = {
-    link: inputLink.value,
-    name: inputTitle.value,
-  };
-  const cardElement = createCard(newCardObject);
-  cardsList.prepend(cardElement);
-  evt.target.reset();
-  closePopup(popupCard);
-}
+// function handleCardFormSubmit(evt) {
+//  // Эта строчка отменяет стандартную отправку формы.
+//   const newCardObject = {
+//     link: inputLink.value,
+//     name: inputTitle.value,
+//   };
+//   const cardElement = createCard(newCardObject);
+//   cardsList.prepend(cardElement);
+//   evt.target.reset();
+//   closePopup(popupCard);
+// }
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();
@@ -186,10 +199,10 @@ btnEditProfile.addEventListener("click", (evt) => {
   formProfileEdit.resetValidation(); 
 });
 
-// btnAddCard.addEventListener("click", () => {
-//   popupWithForm.open();
-//   formCardAdd.resetValidation();
-// }); 
+btnAddCard.addEventListener("click", () => {
+  popupCard.open();
+  formCardAdd.resetValidation();
+}); 
 
 // buttonCloseList.forEach(btn => {
 //   const currentOpenPopup = btn.closest('.popup');
