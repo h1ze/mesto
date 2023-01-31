@@ -84,6 +84,27 @@ formCardAdd.enableValidation();
 
 
 
+// Создание экземпляра карточки
+const createCard = (data) => {
+  const cardObj = new Card(data, '#card', () => popupWithImage.open(data.name, data.link));
+  const cardElement =  cardObj.createCard();
+  return cardElement;
+}
+
+
+
+// создание блока карт
+
+const cardsListSection = new Section ({
+    items: initialCards,
+    renderer: (cardData) => {
+      cardsListSection.addItem(createCard(cardData));
+    },
+  },
+  ".elements__list",
+);
+
+cardsListSection.renderItems();
 
 // Создание попапа с увеличенным изображением
 
@@ -117,22 +138,16 @@ popupCard.setEventListeners();
 
 
 
-// Создание экземпляра карточки
-function createCard(data) {
-  const cardObj = new Card(data, '#card', () => popupWithImage.open(data.name, data.link));
-  const cardElement =  cardObj.createCard();
-  return cardElement;
-}
 
 
 // Добавление карточки в конец списка;
 
-function appendCard(card) {
-  const cardElement = createCard(card);
-  cardsList.append(cardElement);
-}
+// function appendCard(card) {
+//   const cardElement = createCard(card);
+//   cardsList.append(cardElement);
+// }
 
-initialCards.forEach(appendCard);
+// initialCards.forEach(appendCard);
 
 
 
