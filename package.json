@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "- Perfect-pixel концепция;\r - Flex-box;\r - Grid-Layout;\r - семантические теги;\r - БЭМ;\r - Эффекты\r - Директивы @media.\r - JavaScript для реализации функционала редактирования профиля;",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h1ze/mesto.git"
+  },
+  "author": "Kir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h1ze/mesto/issues"
+  },
+  "homepage": "https://github.com/h1ze/mesto#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
