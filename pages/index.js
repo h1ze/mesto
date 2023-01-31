@@ -8,23 +8,10 @@ import { UserInfo } from '../components/UserInfo.js';
 
 const btnEditProfile = document.querySelector(".profile__btn-edit");
 const btnAddCard = document.querySelector(".profile__btn-add");
-// const popupProfile = document.querySelector(".popup_menu_profile");
-// const popupCard = document.querySelector(".popup_menu_card");
-const popupImage = document.querySelector(".popup_menu_image");
-const popupContentImage = popupImage.querySelector(".popup__image");
-const popupContentCaption = popupImage.querySelector(".popup__caption");
-const buttonCloseList = document.querySelectorAll('.popup__close'); 
-
-
-
 const profileForm = document.forms["profile-form"];
 const cardForm = document.forms["card-form"];
-const profileName = document.querySelector(".profile__title");
-const profileInfo = document.querySelector(".profile__subtitle");
 const inputName = profileForm.querySelector(".form__input_value_name");
 const inputInfo = profileForm.querySelector(".form__input_value_info");
-const inputTitle = cardForm.querySelector(".form__input_value_title");
-const inputLink = cardForm.querySelector(".form__input_value_link");
 const cardsList = document.querySelector(".elements__list");
 
 
@@ -72,8 +59,6 @@ const userInfo = new UserInfo({
   userDescriptionSelector: '.profile__subtitle',
 });
 
-
-
 // создать формы с валидацией
 
 const formProfileEdit = new FormValidator(profileForm, constConfig);
@@ -82,16 +67,12 @@ formProfileEdit.enableValidation();
 const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
-
-
 // Создание экземпляра карточки
 const createCard = (data) => {
   const cardObj = new Card(data, '#card', () => popupWithImage.open(data.name, data.link));
   const cardElement =  cardObj.createCard();
   return cardElement;
 }
-
-
 
 // создание блока карт
 
@@ -135,34 +116,6 @@ const popupCard = new PopupWithForm({
   }
 })
 popupCard.setEventListeners();
-
-
-
-
-
-// Добавление карточки в конец списка;
-
-// function appendCard(card) {
-//   const cardElement = createCard(card);
-//   cardsList.append(cardElement);
-// }
-
-// initialCards.forEach(appendCard);
-
-
-
-
-// function handleCardFormSubmit(evt) {
-//  // Эта строчка отменяет стандартную отправку формы.
-//   const newCardObject = {
-//     link: inputLink.value,
-//     name: inputTitle.value,
-//   };
-//   const cardElement = createCard(newCardObject);
-//   cardsList.prepend(cardElement);
-//   evt.target.reset();
-//   closePopup(popupCard);
-// }
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();
