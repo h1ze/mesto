@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__wrapper wrapper">
       <header class="header">
         <img
-          src="./images/logo.svg"
+          src='<%=require("./images/logo.svg")%>'
           alt="Логотип проекта"
           class="header__logo"
           />
@@ -21,7 +20,7 @@
           <div class="profile__info">
             <img
               class="profile__image"
-              src="./images/kusto.jpg"
+              src='<%=require("./images/kusto.jpg")%>'
               alt="Аватарка профиля"
               />
             <div class="profile__text">
@@ -159,6 +158,5 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>
