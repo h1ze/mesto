@@ -4,7 +4,6 @@ export const profileForm = document.forms["profile-form"];
 export const cardForm = document.forms["card-form"];
 export const inputName = profileForm.querySelector(".form__input_value_name");
 export const inputInfo = profileForm.querySelector(".form__input_value_info");
-export const cardsList = document.querySelector(".elements__list");
 
 export const constConfig = {
     formSelector: '.form',

@@ -6,7 +6,7 @@ import { Popup } from '../components/Popup.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, cardsList, constConfig, initialCards } from '../utils/constants.js';
+import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, constConfig, initialCards } from '../utils/constants.js';
 
 // создание обьекта с редактируемыми текстовыми полями профиля
 
@@ -65,8 +65,8 @@ popupProfile.setEventListeners();
 const popupCard = new PopupWithForm({
   popupSelector: '.popup_menu_card',
   handleFormSubmit: (formValues) => {
-    const cardElement = createCard(formValues);
-    cardsList.prepend(cardElement);
+    const cardElement = createCardElement(formValues);
+    cardsListSection.addItem(cardElement);
     popupCard.close();
   }
 })
