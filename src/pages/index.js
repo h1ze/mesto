@@ -25,9 +25,9 @@ formCardAdd.enableValidation();
 
 // Создание экземпляра карточки
 
-const createCard = (data) => {
-  const cardObj = new Card(data, '#card', () => popupWithImage.open(data.name, data.link));
-  const cardElement =  cardObj.createCard();
+const createCardElement = (cardData) => {
+  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link));
+  const cardElement =  card.createCard();
   return cardElement;
 }
 
@@ -36,7 +36,7 @@ const createCard = (data) => {
 const cardsListSection = new Section ({
     items: initialCards,
     renderer: (cardData) => {
-      cardsListSection.addItem(createCard(cardData));
+      cardsListSection.addItem(createCardElement(cardData));
     },
   },
   ".elements__list",
