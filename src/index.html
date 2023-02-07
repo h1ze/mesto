@@ -111,7 +111,7 @@
                 class="form__input form__input_value_link"
                 type="url"
                 value=""
-                name="info"
+                name="link"
                 tabindex="2"
                 placeholder="Ссылка на картинку"
                 required
@@ -133,6 +133,20 @@
               <img class="popup__image" alt="">
               <figcaption class="popup__caption"></figcaption>
             </figure>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup_menu_delete">
+        <div class="popup__container">
+          <button class="popup__close btn-shut-delete" type="button"></button>
+          <div class="popup__content">
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="popup__form form" name="delete-form">
+              <button
+                class="form__button delete-submit"
+                type="submit" tabindex="1"
+              >Да</button>
+            </form>
           </div>
         </div>
       </div>
