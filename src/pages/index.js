@@ -72,6 +72,12 @@ const popupCard = new PopupWithForm({
 })
 popupCard.setEventListeners();
 
+// Создание попапа подтверждения удаления карточки
+
+// const popupDeleteCardConfirm = new Popup({
+//   popupSelector: '.popup_menu_delete',
+// })
+
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();
   const inputsProfileValues = userInfo.getUserInfo();

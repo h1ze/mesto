@@ -8,8 +8,8 @@ export const inputInfo = profileForm.querySelector(".form__input_value_info");
 export const constConfig = {
     formSelector: '.form',
     inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_status_disabled',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_status_disabled',
     inputErrorClass: 'form__input_state_error',
     errorClass: 'form__error_active',
   };

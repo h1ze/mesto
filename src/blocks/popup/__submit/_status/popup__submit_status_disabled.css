@@ -1,4 +1,4 @@
-.form__button_status_disabled {
+.popup__submit_status_disabled {
     border: 1px solid #000;
     background-color: #fff;
     pointer-events: none;
