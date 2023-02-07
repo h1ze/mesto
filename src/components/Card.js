@@ -1,5 +1,5 @@
 export class Card {
-    constructor(data, templateSelector, handleCardClick) {
+    constructor(data, templateSelector, handleCardClick, handleBtnDeleteClick) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
@@ -8,6 +8,7 @@ export class Card {
         this._imageElement = this._element.querySelector(".element__image");
         this._btnDelete = this._element.querySelector(".element__button-delete");
         this._btnLike = this._element.querySelector(".element__button-like");
+        this._handleBtnDeleteClick = handleBtnDeleteClick;
     }
 
 
@@ -24,7 +25,8 @@ export class Card {
 // Навешиваем обработчики на элементы карточки
     _setEventListeners(imageElement, btnDelete, btnLike) {
         imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
-        btnDelete.addEventListener('click', () => this._deleteCard());
+        // btnDelete.addEventListener('click', () => this._deleteCard());
+        btnDelete.addEventListener('click', () => this._handleBtnDeleteClick());
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
 
@@ -34,9 +36,12 @@ export class Card {
   }
   
 // Удаление карточки 
+
     _deleteCard() {
     this._element.remove();
     this._element = null;
   }
+
+
 
 }

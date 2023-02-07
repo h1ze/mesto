@@ -1,6 +1,6 @@
 import { Popup } from "./Popup.js";
 
-class PopupWithConfirmation extends Popup {
+export class PopupWithConfirmation extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
     }
@@ -9,7 +9,11 @@ class PopupWithConfirmation extends Popup {
         super.setEventListeners();
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
-           
+            this.close();
         });
+    }
+
+    _handleDeleteSubmit() {
+        console.log("Удалено");
     }
 }

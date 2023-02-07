@@ -5,6 +5,7 @@ import { Section } from '../components/Section.js';
 import { Popup } from '../components/Popup.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, constConfig, initialCards } from '../utils/constants.js';
 
@@ -23,13 +24,22 @@ formProfileEdit.enableValidation();
 const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
+// функция для обработки сабмита удаления карточки 
+
+const handleDeletCardeClick = () => {
+  popupDeleteCardConfirm.open();
+  // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
+}
+
+
 // Создание экземпляра карточки
 
 const createCardElement = (cardData) => {
-  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link));
+  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeletCardeClick);
   const cardElement =  card.createCard();
   return cardElement;
 }
+
 
 // создание блока карт
 
@@ -69,14 +79,13 @@ const popupCard = new PopupWithForm({
     cardsListSection.addItem(cardElement);
     popupCard.close();
   }
-})
+});
 popupCard.setEventListeners();
 
 // Создание попапа подтверждения удаления карточки
 
-// const popupDeleteCardConfirm = new Popup({
-//   popupSelector: '.popup_menu_delete',
-// })
+const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete');
+popupDeleteCardConfirm.setEventListeners();
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();
