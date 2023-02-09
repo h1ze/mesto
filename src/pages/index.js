@@ -15,6 +15,7 @@ import { Api } from '../components/Api.js';
 const userInfo = new UserInfo({
   userNameSelector: '.profile__title',
   userDescriptionSelector: '.profile__subtitle',
+  userAvatarSelector: '.profile__image'
 });
 
 // создать формы с валидацией
@@ -44,16 +45,16 @@ const createCardElement = (cardData) => {
 
 // создание блока карт
 
-const cardsListSection = new Section ({
-    items: initialCards,
-    renderer: (cardData) => {
-      cardsListSection.addItem(createCardElement(cardData));
-    },
-  },
-  ".elements__list",
-);
+// const cardsListSection = new Section ({
+//     items: initialCards,
+//     renderer: (cardData) => {
+//       cardsListSection.addItem(createCardElement(cardData));
+//     },
+//   },
+//   ".elements__list",
+// );
 
-cardsListSection.renderItems();
+// cardsListSection.renderItems();
 
 // Создание попапа с увеличенным изображением
 
@@ -113,4 +114,27 @@ const api = new Api({
 })
 
 
-api.getInitialCards();
+// Проверка класса API получения массива карт
+
+api.getInitialCards()
+  .then((responseDataCards => {
+    const cardsListSection = new Section ({
+      items: responseDataCards,
+      renderer: (cardData) => {
+        cardsListSection.addItem(createCardElement(cardData));
+      },
+    },
+    ".elements__list",
+  )
+  cardsListSection.renderItems();
+  }
+  ));
+
+
+// Проверка класса API получения данных пользователя
+
+  api.getProfileData()
+    .then((res) => {
+      console.log(res);
+      userInfo.setUserInfo(res);
+    })
