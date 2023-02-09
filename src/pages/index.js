@@ -7,8 +7,38 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, constConfig, initialCards } from '../utils/constants.js';
+import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, constConfig} from '../utils/constants.js';
 import { Api } from '../components/Api.js';
+
+// Тест класса API
+
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-59",
+  headers: {
+    authorization: '01eb8e66-73ce-49ed-89f5-929714990adb',
+    'Content-Type': 'application/json'
+  }
+})
+
+// создание блока карт
+
+const cardsListSection = new Section ({
+  renderer: (cardData) => {
+    cardsListSection.addItem(createCardElement(cardData));
+  },
+},
+".elements__list",
+);
+
+
+
+Promise.all([api.getInitialCards(), api.getProfileData()])
+  .then(([initialCards, profileData]) => {
+    console.log(initialCards,profileData);
+    cardsListSection.renderItems(initialCards);
+  });
+
+
 
 // создание обьекта с редактируемыми текстовыми полями профиля
 
@@ -43,18 +73,7 @@ const createCardElement = (cardData) => {
 }
 
 
-// создание блока карт
 
-// const cardsListSection = new Section ({
-//     items: initialCards,
-//     renderer: (cardData) => {
-//       cardsListSection.addItem(createCardElement(cardData));
-//     },
-//   },
-//   ".elements__list",
-// );
-
-// cardsListSection.renderItems();
 
 // Создание попапа с увеличенным изображением
 
@@ -67,6 +86,7 @@ const popupProfile = new PopupWithForm({
   popupSelector:'.popup_menu_profile', 
   handleFormSubmit: (formValues) => {
     userInfo.setUserInfo(formValues);
+    api.setProfileData(formValues);
     popupProfile.close();
   },
 });
@@ -94,7 +114,6 @@ btnEditProfile.addEventListener("click", (evt) => {
   const inputsProfileValues = userInfo.getUserInfo();
   inputName.value = inputsProfileValues.name; 
   inputInfo.value = inputsProfileValues.about;
-  api.setProfileData(inputsProfileValues);
   formProfileEdit.resetValidation(); 
 });
 
@@ -104,38 +123,15 @@ btnAddCard.addEventListener("click", () => {
 }); 
 
 
-// Тест класса API
-
-const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-59",
-  headers: {
-    authorization: '01eb8e66-73ce-49ed-89f5-929714990adb',
-    'Content-Type': 'application/json'
-  }
-})
 
 
 // Проверка класса API получения массива карт
 
-api.getInitialCards()
-  .then((responseDataCards => {
-    const cardsListSection = new Section ({
-      items: responseDataCards,
-      renderer: (cardData) => {
-        cardsListSection.addItem(createCardElement(cardData));
-      },
-    },
-    ".elements__list",
-  )
-  cardsListSection.renderItems();
-  }
-  ));
 
 
 // Проверка класса API получения данных пользователя
 
   api.getProfileData()
     .then((res) => {
-      console.log(res);
       userInfo.setUserInfo(res);
     })

@@ -50,13 +50,13 @@ export class Api {
             });
     }
 
-    setNewCard({name, link}) {
+    setNewCard(newCardData) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: '', // Здесь нужно забрать название карточки из формы
-                link: '' // Здесь нужно забрать ссылку на изображение из формы
+                name: newCardData.name, // Здесь нужно забрать название карточки из формы
+                link: newCardData.link,// Здесь нужно забрать ссылку на изображение из формы
               })
         })
             .then((res) => {
