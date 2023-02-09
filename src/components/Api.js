@@ -32,13 +32,13 @@ export class Api {
             });
     }
 
-    setProfileData({name, about}) {
+    setProfileData(profileFormData) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                name: '', // Здесь нужно забрать имя пользователя из формы
-                about: '' // Здесь нужно забрать информацию о пользователе из формы
+                name: profileFormData.name, // Здесь нужно забрать имя пользователя из формы
+                about: profileFormData.about, // Здесь нужно забрать информацию о пользователе из формы
               })
         })
             .then((res) => {

@@ -8,13 +8,13 @@ export class UserInfo {
     getUserInfo() {
         const userInfo = {
             name: this._userName.textContent,
-            description: this._userDescription.textContent,
+            about: this._userDescription.textContent,
             avatar: this._userAvatar.src,
          };
          return userInfo;
     }
 
-    setUserInfo({name, about, avatar}) {
+    setUserInfo({name, about, avatar = this._userAvatar.src}) {
         this._userName.textContent = name;
         this._userDescription.textContent = about;
         this._userAvatar.src = avatar;
