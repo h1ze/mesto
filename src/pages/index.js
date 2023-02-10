@@ -70,6 +70,7 @@ const handleDeleteCardeClick = () => {
 const createCardElement = (cardData) => {
   const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick);
   const cardElement =  card.createCard();
+  // console.log(cardData);
   return cardElement;
 }
 

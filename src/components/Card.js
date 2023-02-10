@@ -2,11 +2,13 @@ export class Card {
     constructor(data, templateSelector, handleCardClick, handleBtnDeleteClick) {
         this._name = data.name;
         this._link = data.link;
+        this._likes = data.likes.length;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
         this._element = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode('true');
         this._imageElement = this._element.querySelector(".element__image");
         this._btnDelete = this._element.querySelector(".element__button-delete");
+        this._likesCounter = this._element.querySelector(".element__counter-like");
         this._btnLike = this._element.querySelector(".element__button-like");
         this._handleBtnDeleteClick = handleBtnDeleteClick;
     }
@@ -17,6 +19,7 @@ export class Card {
     createCard() {
         this._imageElement.src = this._link;
         this._imageElement.alt = this._name;
+        this._likesCounter.textContent = this._likes;
         this._element.querySelector(".element__title").textContent = this._name;
         this._setEventListeners(this._imageElement, this._btnDelete, this._btnLike);
         return this._element;
