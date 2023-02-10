@@ -1,0 +1,4 @@
+.element__block-like {
+    display: grid;
+    gap: 3px;
+}

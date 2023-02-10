@@ -65,10 +65,7 @@ export class Api {
                 } else {
                     return Promise.reject(`Ошибка: ${res.status}`);
                 }
-            })
-            .then((data) => {
-                console.log(data);
-            })
+            });
     }
 
 
