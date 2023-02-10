@@ -36,6 +36,7 @@ Promise.all([api.getInitialCards(), api.getProfileData()])
   .then(([initialCards, profileData]) => {
     console.log(initialCards,profileData);
     cardsListSection.renderItems(initialCards);
+    userInfo.setUserInfo(profileData);
   });
 
 
@@ -58,7 +59,7 @@ formCardAdd.enableValidation();
 
 // функция для обработки сабмита удаления карточки 
 
-const handleDeletCardeClick = () => {
+const handleDeleteCardeClick = () => {
   popupDeleteCardConfirm.open();
   // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
 }
@@ -67,7 +68,7 @@ const handleDeletCardeClick = () => {
 // Создание экземпляра карточки
 
 const createCardElement = (cardData) => {
-  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeletCardeClick);
+  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick);
   const cardElement =  card.createCard();
   return cardElement;
 }
@@ -99,6 +100,7 @@ const popupCard = new PopupWithForm({
   handleFormSubmit: (formValues) => {
     const cardElement = createCardElement(formValues);
     cardsListSection.addItem(cardElement);
+    api.setNewCard(formValues);
     popupCard.close();
   }
 });
@@ -123,15 +125,3 @@ btnAddCard.addEventListener("click", () => {
 }); 
 
 
-
-
-// Проверка класса API получения массива карт
-
-
-
-// Проверка класса API получения данных пользователя
-
-  api.getProfileData()
-    .then((res) => {
-      userInfo.setUserInfo(res);
-    })
