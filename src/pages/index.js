@@ -68,7 +68,7 @@ formCardAdd.enableValidation();
 // Создание экземпляра карточки
 
 const createCardElement = (cardData) => {
-  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick, userID);
+  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick, handleAddLike, handleRemoveLike, userID);
   const cardElement =  card.createCard();
   // console.log(cardData);
   return cardElement;
@@ -109,32 +109,42 @@ const popupCard = new PopupWithForm({
 });
 popupCard.setEventListeners();
 
-
 // функция для обработки сабмита удаления карточки 
 
-const handleDeleteConfirm = (card, id) => {
-  api.deleteCard(id)
+const handleDeleteConfirm = (card, cardId) => {
+  api.deleteCard(cardId)
     .then((res) => {
       console.log(res);
-      card.remove();
+      card.deleteCard();
     });
 }
-
 
 // Создание попапа подтверждения удаления карточки
 
 const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete', handleDeleteConfirm);
 
+// Открытие попапа  попапа подтверждения удаления карточки с передачей карточки и её ID, навешивание обработчика сабмита
 
-
-const handleDeleteCardeClick = (card, id) => {
+const handleDeleteCardeClick = (card, cardId) => {
   popupDeleteCardConfirm.open();
-  popupDeleteCardConfirm.setEventListeners(card, id);
+  popupDeleteCardConfirm.setEventListeners(card, cardId);
   // console.log(evt.target.closest('.element'), id);
   // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
 }
 
+const handleAddLike = (card, cardId) => {
+  api.addLike(cardId)
+    .then((cardDataResponse) => {
+      card.setLikes(cardDataResponse);
+});
+}
 
+const handleRemoveLike = (card, cardId) => {
+  api.removeLike(cardId)
+    .then((cardDataResponse) => {
+      card.setLikes(cardDataResponse);
+});
+}
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();

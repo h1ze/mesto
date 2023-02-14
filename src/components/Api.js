@@ -85,6 +85,37 @@ export class Api {
     }
 
 
+    addLike(cardID) {
+        return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+            method: 'PUT',
+            headers: this._headers,
+            // body: JSON.stringify({
+            //   })
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+            });
+    }
+
+    removeLike(cardID) {
+        return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+            });
+    }
+
+
     
     // https://mesto.nomoreparties.co/v1/cohort-59
     // Токен: 01eb8e66-73ce-49ed-89f5-929714990adb
