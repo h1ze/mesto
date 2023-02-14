@@ -68,6 +68,21 @@ export class Api {
             });
     }
 
+    deleteCard(cardID) {
+        return fetch(`${this._baseUrl}/cards/${cardID}`, {
+            method: 'DELETE',
+            headers: this._headers,
+            // body: JSON.stringify({
+            //   })
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+            });
+    }
 
 
     

@@ -30,11 +30,14 @@ const cardsListSection = new Section ({
 ".elements__list",
 );
 
+let userID;
 
+// Получаем с сервера карточки и данные пользователя в промисе, отрисовываем после получения всех данных
 
 Promise.all([api.getInitialCards(), api.getProfileData()])
   .then(([initialCards, profileData]) => {
     console.log(initialCards,profileData);
+    userID = profileData._id;
     cardsListSection.renderItems(initialCards);
     userInfo.setUserInfo(profileData);
   });
@@ -49,6 +52,8 @@ const userInfo = new UserInfo({
   userAvatarSelector: '.profile__image'
 });
 
+console.log(userInfo);
+
 // создать формы с валидацией
 
 const formProfileEdit = new FormValidator(profileForm, constConfig);
@@ -57,25 +62,17 @@ formProfileEdit.enableValidation();
 const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
-// функция для обработки сабмита удаления карточки 
 
-const handleDeleteCardeClick = () => {
-  popupDeleteCardConfirm.open();
-  // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
-}
 
 
 // Создание экземпляра карточки
 
 const createCardElement = (cardData) => {
-  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick);
+  const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick, userID);
   const cardElement =  card.createCard();
   // console.log(cardData);
   return cardElement;
 }
-
-
-
 
 // Создание попапа с увеличенным изображением
 
@@ -99,18 +96,45 @@ popupProfile.setEventListeners();
 const popupCard = new PopupWithForm({
   popupSelector: '.popup_menu_card',
   handleFormSubmit: (formValues) => {
-    const cardElement = createCardElement(formValues);
-    cardsListSection.addItem(cardElement);
-    api.setNewCard(formValues);
-    popupCard.close();
+    // formValues.owner = {_id: userID};
+    // formValues.likes = [];
+    api.setNewCard(formValues)
+      .then((cardDataResponse) => {
+        console.log(cardDataResponse);
+        const cardElement = createCardElement(cardDataResponse);
+        cardsListSection.addItem(cardElement);
+        popupCard.close();
+      })
   }
 });
 popupCard.setEventListeners();
 
+
+// функция для обработки сабмита удаления карточки 
+
+const handleDeleteConfirm = (card, id) => {
+  api.deleteCard(id)
+    .then((res) => {
+      console.log(res);
+      card.remove();
+    });
+}
+
+
 // Создание попапа подтверждения удаления карточки
 
-const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete');
-popupDeleteCardConfirm.setEventListeners();
+const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete', handleDeleteConfirm);
+
+
+
+const handleDeleteCardeClick = (card, id) => {
+  popupDeleteCardConfirm.open();
+  popupDeleteCardConfirm.setEventListeners(card, id);
+  // console.log(evt.target.closest('.element'), id);
+  // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
+}
+
+
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();

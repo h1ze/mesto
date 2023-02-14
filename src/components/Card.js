@@ -1,10 +1,13 @@
 export class Card {
-    constructor(data, templateSelector, handleCardClick, handleBtnDeleteClick) {
+        constructor(data, templateSelector, handleCardClick, handleBtnDeleteClick, userID) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes.length;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
+        this._cardID = data._id;
+        this._userID = userID;
+        this._ownerID = data.owner._id;
         this._element = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode('true');
         this._imageElement = this._element.querySelector(".element__image");
         this._btnDelete = this._element.querySelector(".element__button-delete");
@@ -22,6 +25,7 @@ export class Card {
         this._likesCounter.textContent = this._likes;
         this._element.querySelector(".element__title").textContent = this._name;
         this._setEventListeners(this._imageElement, this._btnDelete, this._btnLike);
+        this._checkOwner();
         return this._element;
       }
 
@@ -29,7 +33,7 @@ export class Card {
     _setEventListeners(imageElement, btnDelete, btnLike) {
         imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
         // btnDelete.addEventListener('click', () => this._deleteCard());
-        btnDelete.addEventListener('click', () => this._handleBtnDeleteClick());
+        btnDelete.addEventListener('click', (evt) => this._handleBtnDeleteClick(this._element, this._cardID));
         btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     }
 
@@ -45,6 +49,11 @@ export class Card {
     this._element = null;
   }
 
+// Убрать возможность удаления карточки, если пользователь не создавал её
+_checkOwner() {
+    if (this._ownerID !== this._userID) {
+    this._btnDelete.remove();
+};
 
-
+}
 }
