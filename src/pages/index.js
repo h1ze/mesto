@@ -84,12 +84,30 @@ popupWithImage.setEventListeners();
 const popupProfile = new PopupWithForm({
   popupSelector:'.popup_menu_profile', 
   handleFormSubmit: (formValues) => {
-    userInfo.setUserInfo(formValues);
-    api.setProfileData(formValues);
-    popupProfile.close();
+    api.setProfileData(formValues)
+      .then((profileDataResponse) => {
+        userInfo.setUserInfo(profileDataResponse);
+        popupProfile.close();
+      });
   },
 });
 popupProfile.setEventListeners();
+
+// Создание попапа редактирования аватара
+
+const popupAvatar = new PopupWithForm({
+  popupSelector: '.popup_menu_avatar',
+  handleFormSubmit: (formValues) => {
+    api.setAvatar(formValues)
+      .then((profileDataResponse) => {
+        userInfo.setAvatar(profileDataResponse);
+        popupAvatar.close();
+    });
+  }
+});
+popupAvatar.setEventListeners();
+
+//
 
 // Создание попапа добавления карточки
 
