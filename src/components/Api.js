@@ -72,8 +72,6 @@ export class Api {
         return fetch(`${this._baseUrl}/cards/${cardID}`, {
             method: 'DELETE',
             headers: this._headers,
-            // body: JSON.stringify({
-            //   })
         })
             .then((res) => {
                 if (res.ok) {
@@ -89,8 +87,6 @@ export class Api {
         return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
             method: 'PUT',
             headers: this._headers,
-            // body: JSON.stringify({
-            //   })
         })
             .then((res) => {
                 if (res.ok) {
@@ -116,7 +112,24 @@ export class Api {
     }
 
 
-    
+    setAvatar(link) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: link, // Здесь должна быть ссылка на новый аватар
+              })
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Ошибка: ${res.status}`);
+                }
+            });
+    }
+
+
     // https://mesto.nomoreparties.co/v1/cohort-59
     // Токен: 01eb8e66-73ce-49ed-89f5-929714990adb
     // Идентификатор группы: cohort-59"
