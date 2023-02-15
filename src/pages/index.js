@@ -7,7 +7,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { btnEditProfile, btnAddCard, profileForm, cardForm, inputName, inputInfo, constConfig} from '../utils/constants.js';
+import { btnEditProfile, btnEditAvatar, btnAddCard, profileForm, avatarForm, cardForm, inputName, inputInfo, constConfig} from '../utils/constants.js';
 import { Api } from '../components/Api.js';
 
 // Тест класса API
@@ -62,6 +62,8 @@ formProfileEdit.enableValidation();
 const formCardAdd = new FormValidator(cardForm, constConfig);
 formCardAdd.enableValidation();
 
+const formAvatarEdit = new FormValidator(avatarForm, constConfig);
+formAvatarEdit.enableValidation();
 
 
 
@@ -98,6 +100,7 @@ popupProfile.setEventListeners();
 const popupAvatar = new PopupWithForm({
   popupSelector: '.popup_menu_avatar',
   handleFormSubmit: (formValues) => {
+    console.log(formValues);
     api.setAvatar(formValues)
       .then((profileDataResponse) => {
         userInfo.setAvatar(profileDataResponse);
@@ -177,4 +180,8 @@ btnAddCard.addEventListener("click", () => {
   formCardAdd.resetValidation();
 }); 
 
+btnEditAvatar.addEventListener("click", () => {
+  popupAvatar.open();
+  formAvatarEdit.resetValidation();
+});
 

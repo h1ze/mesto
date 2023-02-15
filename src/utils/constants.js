@@ -1,6 +1,8 @@
 export const btnEditProfile = document.querySelector(".profile__btn-edit");
+export const btnEditAvatar = document.querySelector(".profile__btn-image-edit");
 export const btnAddCard = document.querySelector(".profile__btn-add");
 export const profileForm = document.forms["profile-form"];
+export const avatarForm = document.forms["avatar-form"];
 export const cardForm = document.forms["card-form"];
 export const inputName = profileForm.querySelector(".form__input_value_name");
 export const inputInfo = profileForm.querySelector(".form__input_value_info");
