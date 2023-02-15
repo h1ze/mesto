@@ -86,9 +86,11 @@ popupWithImage.setEventListeners();
 const popupProfile = new PopupWithForm({
   popupSelector:'.popup_menu_profile', 
   handleFormSubmit: (formValues) => {
+    popupProfile.showLoadingStatus(true);
     api.setProfileData(formValues)
       .then((profileDataResponse) => {
         userInfo.setUserInfo(profileDataResponse);
+        popupProfile.showLoadingStatus(false);
         popupProfile.close();
       });
   },
@@ -100,10 +102,11 @@ popupProfile.setEventListeners();
 const popupAvatar = new PopupWithForm({
   popupSelector: '.popup_menu_avatar',
   handleFormSubmit: (formValues) => {
-    console.log(formValues);
+    popupAvatar.showLoadingStatus(true);
     api.setAvatar(formValues)
       .then((profileDataResponse) => {
         userInfo.setAvatar(profileDataResponse);
+        popupAvatar.showLoadingStatus(false);
         popupAvatar.close();
     });
   }
@@ -117,13 +120,12 @@ popupAvatar.setEventListeners();
 const popupCard = new PopupWithForm({
   popupSelector: '.popup_menu_card',
   handleFormSubmit: (formValues) => {
-    // formValues.owner = {_id: userID};
-    // formValues.likes = [];
+    popupCard.showLoadingStatus(true);
     api.setNewCard(formValues)
       .then((cardDataResponse) => {
-        console.log(cardDataResponse);
         const cardElement = createCardElement(cardDataResponse);
         cardsListSection.addItem(cardElement);
+        popupCard.showLoadingStatus(false);
         popupCard.close();
       })
   }
@@ -134,8 +136,7 @@ popupCard.setEventListeners();
 
 const handleDeleteConfirm = (card, cardId) => {
   api.deleteCard(cardId)
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       card.deleteCard();
     });
 }
