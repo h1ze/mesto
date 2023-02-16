@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+  <script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+  <body class="page">
+    <div class="page__wrapper wrapper">
+      <header class="header">
+        <img
+          src='images/logo.03b78ada3425e9132ff3.svg'
+          alt="Логотип проекта"
+          class="header__logo"
+          />
+      </header>
+      <main>
+        <section class="profile">
+          <div class="profile__content">
+            <div class="profile__avatar">
+              <img
+              class="profile__image"
+              src='images/kusto.76fca75e67e2c9a6b0a1.jpg'
+              alt="Аватарка профиля"
+              />
+            <button class="profile__btn-image-edit"></button>
+            </div>
+            <div class="profile__info">
+              <div class="profile__text">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button
+                  class="profile__btn-edit"
+                  type="button"
+                  aria-label="Редактировать профиль"
+                ></button>
+                <p class="profile__subtitle">Исследователь океана</p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="profile__btn-add"
+            type="button"
+            aria-label="Добавление профиля"
+          ></button>
+        </section>
+        <section class="elements">
+          <ul class="elements__list">
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+      </footer>
+      <div class="popup popup_menu_profile">
+        <div class="popup__container">
+          <button class="popup__close btn-shut-profile" type="button"></button>
+          <div class="popup__content">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form form" name="profile-form">
+              <input
+                id = "profile-name"
+                class="form__input form__input_value_name"
+                type="text"
+                value=""
+                name="name"
+                tabindex="1"
+                placeholder="Имя"
+                minlength="2"
+                maxlength="40"
+                required
+                />
+              <span class="profile-name-error form__error"></span>
+              <input
+                id = "profile-info"
+                class="form__input form__input_value_info"
+                type="text"
+                value=""
+                name="about"
+                tabindex="2"
+                placeholder="О себе"
+                minlength="2"
+                maxlength="200"
+                required
+                />
+              <span class="profile-info-error form__error"></span>
+              <button
+                class="form__button profile-submit"
+                type="submit" tabindex="3"
+              >Сохранить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup_menu_card">
+        <div class="popup__container">
+          <button class="popup__close btn-shut-card" type="button"></button>
+          <div class="popup__content">
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form form" name="card-form">
+              <input
+                id="card-title"
+                class="form__input form__input_value_title"
+                type="text"
+                value=""
+                name="name"
+                tabindex="1"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required
+                />
+              <span class="card-title-error form__error"></span>
+              <input
+                id="card-url"
+                class="form__input form__input_value_link"
+                type="url"
+                value=""
+                name="link"
+                tabindex="2"
+                placeholder="Ссылка на картинку"
+                required
+                />
+              <span class="card-url-error form__error"></span>
+              <button
+                class="form__button card-submit"
+                type="submit" tabindex="3"
+              >Сохранить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup_menu_image popup_background_darkest">
+        <div class="popup__container">
+          <button class="popup__close btn-shut-image" type="button"></button>
+          <div class="popup__holder-image">
+            <figure class="popup__figure">
+              <img class="popup__image" alt="">
+              <figcaption class="popup__caption"></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="popup popup_menu_delete">
+        <div class="popup__container">
+          <button class="popup__close btn-shut-delete" type="button"></button>
+          <div class="popup__content">
+            <h2 class="popup__title popup__title_type_confirmation">Вы уверены?</h2>
+            <form class="popup__form form" name="delete-form">
+              <button
+                class="form__button form__button_type_confirmation delete-submit"
+                type="submit" tabindex="1"
+              >Да</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup_menu_avatar">
+      <div class="popup__container">
+        <button class="popup__close btn-shut-avatar" type="button"></button>
+        <div class="popup__content">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="popup__form form" name="avatar-form">
+            <input
+              id = "profile-avatar"
+              class="form__input form__input_value_avatar"
+              type="url"
+              value=""
+              name="avatar"
+              tabindex="1"
+              placeholder=""
+              required
+              />
+            <span class="profile-avatar-error form__error"></span>
+            <button
+              class="form__button avatar-submit"
+              type="submit" tabindex="2"
+            >Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <template id="card">
+      <li class="element">
+        <img
+          alt="Изображение карточки"
+          class="element__image"
+        />
+        <button
+          class="element__button-delete"
+          type="button"
+          aria-label="Удалить"
+        ></button>
+        <div class="element__text">
+          <h2 class="element__title"></h2>
+          <div class="element__block-like">
+            <button
+              class="element__button-like"
+              type="button"
+              aria-label="Лайкнуть"
+            ></button>
+            <span class="element__counter-like"></span>
+          </div>
+        </div>
+      </li>
+    </template>
+  </body>
+</html>
