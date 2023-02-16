@@ -14,8 +14,4 @@ export class PopupWithConfirmation extends Popup {
             this.close();
         });
     }
-
-    _handleDeleteSubmit() {
-        console.log("Удалено");
-    }
 }
