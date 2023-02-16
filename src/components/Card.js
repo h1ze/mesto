@@ -18,8 +18,6 @@ export class Card {
         this._handleRemoveLike = handleRemoveLike;
     }
 
-
-
 // Заполняем разметку карточки, вызываем добавление обработчиков и возвращаем готовую карточку
     createCard() {
         this._imageElement.src = this._link;
@@ -32,9 +30,6 @@ export class Card {
       }
 
 // Переключение состояния активности лайка на карточке
-//     _toggleLike() {
-//         this._btnLike.classList.toggle("element__button-like_active");
-//   }
 
 _toggleLike() {
     if (this._btnLike.classList.contains("element__button-like_active")) {
@@ -79,9 +74,7 @@ _setBtnLikeListeners() {
 // Навешиваем обработчики на элементы карточки
 _setEventListeners(imageElement, btnDelete, btnLike) {
     imageElement.addEventListener("click", () => this._handleCardClick(this._name, this._link));
-    // btnDelete.addEventListener('click', () => this._deleteCard());
     btnDelete.addEventListener('click', (evt) => this._handleBtnDeleteClick(this, this._cardID));
-    // btnLike.addEventListener('click', () => this._toggleLike(btnLike));
     btnLike.addEventListener('click', () => this._toggleLike());
 };
 

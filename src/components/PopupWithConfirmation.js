@@ -1,21 +1,26 @@
 import { Popup } from "./Popup.js";
 
 export class PopupWithConfirmation extends Popup {
-    constructor(popupSelector, handlerDeleteSubmit) {
+    constructor(popupSelector, handleDeleteConfirm) {
         super(popupSelector);
-        this._handlerDeleteSubmit = handlerDeleteSubmit;
+        this._handleDeleteConfirm = handleDeleteConfirm;
     }
 
-    setEventListeners(card, id) {
+    getCardData = (card, cardId) => {
+        this._card = card;
+        this._cardId = cardId;
+    }
+
+    setEventListeners() {
         super.setEventListeners();
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handlerDeleteSubmit(card,id)
-                .then((response) => {
-                    response.ok 
-                        ? this.close()
-                        : Promise.reject(`Ошибка: ${response.status}`);
-                });
+            this._handleDeleteConfirm(this._card, this._cardId);
+                // .then((response) => {
+                //     response.ok 
+                //         ? this.close()
+                //         : Promise.reject(`Ошибка: ${response.status}`);
+                // });
         });
     }
 }

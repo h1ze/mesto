@@ -130,18 +130,22 @@ const handleDeleteConfirm = (card, cardId) => {
   api.deleteCard(cardId)
     .then(() => {
       card.deleteCard();
+      popupDeleteCardConfirm.close();
     });
 }
 
 // Создание попапа подтверждения удаления карточки
 
 const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete', handleDeleteConfirm);
+popupDeleteCardConfirm.setEventListeners();
+
+
 
 // Открытие попапа  попапа подтверждения удаления карточки с передачей карточки и её ID, навешивание обработчика сабмита
 
 const handleDeleteCardeClick = (card, cardId) => {
   popupDeleteCardConfirm.open();
-  popupDeleteCardConfirm.setEventListeners(card, cardId);
+  popupDeleteCardConfirm.getCardData(card, cardId);
 }
 
 // Добавление лайка
