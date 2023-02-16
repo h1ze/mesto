@@ -15,25 +15,27 @@
           class="header__logo"
           />
       </header>
-      <main class="content">
-        <section class="content__profile profile">
-          <div class="profile__avatar">
-            <img
-            class="profile__image"
-            src='<%=require("./images/kusto.jpg")%>'
-            alt="Аватарка профиля"
-            />
-          <button class="profile__btn-image-edit"></button>
-          </div>
-          <div class="profile__info">
-            <div class="profile__text">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button
-                class="profile__btn-edit"
-                type="button"
-                aria-label="Редактировать профиль"
-              ></button>
-              <p class="profile__subtitle">Исследователь океана</p>
+      <main>
+        <section class="profile">
+          <div class="profile__content">
+            <div class="profile__avatar">
+              <img
+              class="profile__image"
+              src='<%=require("./images/kusto.jpg")%>'
+              alt="Аватарка профиля"
+              />
+            <button class="profile__btn-image-edit"></button>
+            </div>
+            <div class="profile__info">
+              <div class="profile__text">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button
+                  class="profile__btn-edit"
+                  type="button"
+                  aria-label="Редактировать профиль"
+                ></button>
+                <p class="profile__subtitle">Исследователь океана</p>
+              </div>
             </div>
           </div>
           <button

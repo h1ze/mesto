@@ -36,13 +36,10 @@ let userID;
 
 Promise.all([api.getInitialCards(), api.getProfileData()])
   .then(([initialCards, profileData]) => {
-    console.log(initialCards,profileData);
     userID = profileData._id;
     cardsListSection.renderItems(initialCards);
     userInfo.setUserInfo(profileData);
   });
-
-
 
 // создание обьекта с редактируемыми текстовыми полями профиля
 
@@ -51,8 +48,6 @@ const userInfo = new UserInfo({
   userDescriptionSelector: '.profile__subtitle',
   userAvatarSelector: '.profile__image'
 });
-
-console.log(userInfo);
 
 // создать формы с валидацией
 
@@ -64,8 +59,6 @@ formCardAdd.enableValidation();
 
 const formAvatarEdit = new FormValidator(avatarForm, constConfig);
 formAvatarEdit.enableValidation();
-
-
 
 // Создание экземпляра карточки
 
@@ -113,7 +106,6 @@ const popupAvatar = new PopupWithForm({
 });
 popupAvatar.setEventListeners();
 
-//
 
 // Создание попапа добавления карточки
 
@@ -150,9 +142,9 @@ const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete', h
 const handleDeleteCardeClick = (card, cardId) => {
   popupDeleteCardConfirm.open();
   popupDeleteCardConfirm.setEventListeners(card, cardId);
-  // console.log(evt.target.closest('.element'), id);
-  // Здесь нужно будет добавить навешивание на кнопку подтверждения листенер с вызовом логики обработки удаления карточки из класса API
 }
+
+// Добавление лайка
 
 const handleAddLike = (card, cardId) => {
   api.addLike(cardId)
@@ -161,12 +153,16 @@ const handleAddLike = (card, cardId) => {
 });
 }
 
+// Удаление лайка
+
 const handleRemoveLike = (card, cardId) => {
   api.removeLike(cardId)
     .then((cardDataResponse) => {
       card.setLikes(cardDataResponse);
 });
 }
+
+// Навешивание листенеров на кнопки
 
 btnEditProfile.addEventListener("click", (evt) => {
   popupProfile.open();
