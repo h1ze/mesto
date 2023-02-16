@@ -65,7 +65,8 @@ setLikes(cardDataResponse) {
 };
 
 _checkLikeStatus() {
-   if (this._likes.some(item => this._ownerID === this._userID)) {
+    console.log(this._likes);
+   if (this._likes.some(item => item._id === this._userID)) {
     this._btnLike.classList.add("element__button-like_active");
    }
 }
