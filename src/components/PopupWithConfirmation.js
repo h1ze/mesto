@@ -10,8 +10,12 @@ export class PopupWithConfirmation extends Popup {
         super.setEventListeners();
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handlerDeleteSubmit(card,id);
-            this.close();
+            this._handlerDeleteSubmit(card,id)
+                .then((response) => {
+                    response.ok 
+                        ? this.close()
+                        : Promise.reject(`Ошибка: ${response.status}`);
+                });
         });
     }
 }
