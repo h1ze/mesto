@@ -39,6 +39,9 @@ Promise.all([api.getInitialCards(), api.getProfileData()])
     userID = profileData._id;
     cardsListSection.renderItems(initialCards);
     userInfo.setUserInfo(profileData);
+  })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
   });
 
 // создание обьекта с редактируемыми текстовыми полями профиля
@@ -65,7 +68,6 @@ formAvatarEdit.enableValidation();
 const createCardElement = (cardData) => {
   const card = new Card(cardData, '#card', () => popupWithImage.open(cardData.name, cardData.link), handleDeleteCardeClick, handleAddLike, handleRemoveLike, userID);
   const cardElement =  card.createCard();
-  // console.log(cardData);
   return cardElement;
 }
 
@@ -83,9 +85,12 @@ const popupProfile = new PopupWithForm({
     api.setProfileData(formValues)
       .then((profileDataResponse) => {
         userInfo.setUserInfo(profileDataResponse);
-        popupProfile.showLoadingStatus(false);
         popupProfile.close();
-      });
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(() => popupProfile.showLoadingStatus(false));
   },
 });
 popupProfile.setEventListeners();
@@ -99,9 +104,12 @@ const popupAvatar = new PopupWithForm({
     api.setAvatar(formValues)
       .then((profileDataResponse) => {
         userInfo.setAvatar(profileDataResponse);
-        popupAvatar.showLoadingStatus(false);
         popupAvatar.close();
-    });
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(() => popupAvatar.showLoadingStatus(false));
   }
 });
 popupAvatar.setEventListeners();
@@ -117,9 +125,12 @@ const popupCard = new PopupWithForm({
       .then((cardDataResponse) => {
         const cardElement = createCardElement(cardDataResponse);
         cardsListSection.addItem(cardElement);
-        popupCard.showLoadingStatus(false);
         popupCard.close();
       })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(() => popupCard.showLoadingStatus(false));
   }
 });
 popupCard.setEventListeners();
@@ -131,15 +142,16 @@ const handleDeleteConfirm = (card, cardId) => {
     .then(() => {
       card.deleteCard();
       popupDeleteCardConfirm.close();
-    });
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    })  ;
 }
 
 // Создание попапа подтверждения удаления карточки
 
 const popupDeleteCardConfirm = new PopupWithConfirmation('.popup_menu_delete', handleDeleteConfirm);
 popupDeleteCardConfirm.setEventListeners();
-
-
 
 // Открытие попапа  попапа подтверждения удаления карточки с передачей карточки и её ID, навешивание обработчика сабмита
 
@@ -154,7 +166,10 @@ const handleAddLike = (card, cardId) => {
   api.addLike(cardId)
     .then((cardDataResponse) => {
       card.setLikes(cardDataResponse);
-});
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
 }
 
 // Удаление лайка
@@ -163,7 +178,10 @@ const handleRemoveLike = (card, cardId) => {
   api.removeLike(cardId)
     .then((cardDataResponse) => {
       card.setLikes(cardDataResponse);
-});
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
 }
 
 // Навешивание листенеров на кнопки

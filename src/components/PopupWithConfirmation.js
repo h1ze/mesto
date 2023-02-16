@@ -16,11 +16,6 @@ export class PopupWithConfirmation extends Popup {
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._handleDeleteConfirm(this._card, this._cardId);
-                // .then((response) => {
-                //     response.ok 
-                //         ? this.close()
-                //         : Promise.reject(`Ошибка: ${response.status}`);
-                // });
         });
     }
 }
