@@ -26,6 +26,7 @@ export class Card {
         this._element.querySelector(".element__title").textContent = this._name;
         this._setEventListeners(this._imageElement, this._btnDelete, this._btnLike);
         this._checkOwner();
+        this._checkLikeStatus();
         return this._element;
       }
 
@@ -62,6 +63,12 @@ setLikes(cardDataResponse) {
     this._likes = cardDataResponse.likes;
     this._likesCounter.textContent = this._likes.length;
 };
+
+_checkLikeStatus() {
+   if (this._likes.some(item => this._ownerID === this._userID)) {
+    this._btnLike.classList.add("element__button-like_active");
+   }
+}
 
 
 _setBtnLikeListeners() {
